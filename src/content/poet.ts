@@ -16,7 +16,7 @@ export interface Interlude {
   lines: string[]
 }
 
-// PLACEHOLDER — replace with Thilak's published lines when supplied.
+// Scroll-typed verses; the rest of the poems live in poems.ts (the notebook).
 export const INTERLUDES: Interlude[] = [
   {
     lines: [
@@ -24,21 +24,6 @@ export const INTERLUDES: Interlude[] = [
       'so the soil did it for her —',
       'that smell after rain is just the earth',
       'remembering everything at once.',
-    ],
-  },
-  {
-    lines: [
-      'i keep a museum of almosts:',
-      'ticket stubs, half-hellos,',
-      'the version of me from senior year',
-      'still waving from the corridor.',
-    ],
-  },
-  {
-    lines: [
-      'you have not met yourself, not yet —',
-      'not until the room goes quiet',
-      'and no one else is writing your lines.',
     ],
   },
   {

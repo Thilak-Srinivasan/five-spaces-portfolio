@@ -3,8 +3,10 @@ import { useCanvasEffect } from '../../canvas/useCanvasEffect'
 import { ExternalIcon } from '../../components/Icons'
 import { QUOTES } from '../../content/quotes'
 import { BIO, CREDIT, INFLUENCES, INTERLUDES, OPENING, READING_NOTE, SHELF, WALL_NOTE, WALL_TITLE } from '../../content/poet'
+import { NOTEBOOK_NOTE, NOTEBOOK_TITLE } from '../../content/poems'
 import { LINKS } from '../../content/links'
 import { TypeLine } from './TypeLine'
+import { PoetryNotebook } from './PoetryNotebook'
 
 function SectionLabel({ children }: { children: string }) {
   return (
@@ -56,8 +58,17 @@ export function PoetSpace() {
           ))}
         </div>
 
-        {/* the shelf — curated readings, all linked */}
+        {/* the notebook — click the edges, it turns */}
         <section className="mt-24">
+          <SectionLabel>{NOTEBOOK_TITLE}</SectionLabel>
+          <p className="mx-auto mb-12 max-w-md text-center font-serif italic leading-relaxed text-[var(--ink-dim)]">
+            {NOTEBOOK_NOTE}
+          </p>
+          <PoetryNotebook />
+        </section>
+
+        {/* the shelf — curated readings, all linked */}
+        <section className="mt-32">
           <SectionLabel>the shelf</SectionLabel>
           <p className="mx-auto mb-12 max-w-md text-center font-serif italic leading-relaxed text-[var(--ink-dim)]">
             {READING_NOTE}
