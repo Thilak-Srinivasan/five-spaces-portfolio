@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-grotesk: 'Space Grotesk', sans-serif;
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* landing defaults — morphed per persona by PersonaContext */
+  --bg: #07080c;
+  --bg-soft: #0c0f16;
+  --accent: #2e6fff;
+  --accent2: #ff2a3c;
+  --ink: #e8ecf4;
+  --ink-dim: #66707f;
+  --heading-font: var(--font-grotesk);
+  --body-font: var(--font-grotesk);
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ink-dim) transparent;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body-font);
+  transition: background-color 0.8s ease;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* hide native cursor when the custom one is active (fine pointers only) */
+@media (pointer: fine) {
+  html[data-cursor] body,
+  html[data-cursor] a,
+  html[data-cursor] button {
+    cursor: none;
+  }
+}
+
+.heading-font {
+  font-family: var(--heading-font);
+}
+.body-font {
+  font-family: var(--body-font);
+}
+
+/* static gradient fallbacks for reduced motion */
+.canvas-fallback {
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 20%, color-mix(in srgb, var(--accent) 12%, transparent), transparent),
+    radial-gradient(ellipse 60% 50% at 20% 80%, color-mix(in srgb, var(--accent2) 8%, transparent), transparent);
+}
+
+/* paper grain for artist space */
+.paper-grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* marquee for skills ticker */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+/* equalizer teaser bars */
+@keyframes eq {
+  0%, 100% { transform: scaleY(0.25); }
+  50% { transform: scaleY(1); }
+}
+
+/* glitch text for the anomaly button */
+@keyframes glitch {
+  0%, 92%, 100% { text-shadow: none; transform: none; }
+  93% { text-shadow: 2px 0 #ff4fa3, -2px 0 #37f5c8; transform: translateX(-1px); }
+  95% { text-shadow: -2px 0 #ff4fa3, 2px 0 #37f5c8; transform: translateX(1px); }
+  97% { text-shadow: 1px 0 #ff4fa3, -1px 0 #37f5c8; transform: none; }
+}
+.glitch-text {
+  animation: glitch 4s infinite;
+}
+.chromatic {
+  text-shadow: 2px 0 rgba(255, 79, 163, 0.7), -2px 0 rgba(55, 245, 200, 0.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee, .glitch-text {
+    animation: none;
+  }
+}
