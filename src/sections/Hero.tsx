@@ -1,10 +1,47 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
 import { Starfield3D } from '../canvas/Starfield3D'
-import { useCanvasEffect } from '../canvas/useCanvasEffect'
+import { useCanvasEffect, prefersReducedMotion } from '../canvas/useCanvasEffect'
 
 gsap.registerPlugin(SplitText)
+
+const ORBIT_LINES = [
+  '“we only attract what we subconsciously believe we are worthy of receiving.”',
+  'solves Navier–Stokes by day. loses arguments with metaphors by night.',
+  '“oh boy, the paradox of choice.”',
+  'fluent in shock waves, petrichor, graphite, and 76,130 minutes of music.',
+  '“no feeling is final.” — not even turbulence.',
+]
+
+/** One quiet line at a time, cross-fading beneath the name. */
+function OrbitingLine() {
+  const [idx, setIdx] = useState(0)
+  const ref = useRef<HTMLParagraphElement>(null)
+
+  useEffect(() => {
+    if (prefersReducedMotion()) return
+    const id = setInterval(() => {
+      gsap.to(ref.current, {
+        opacity: 0,
+        y: -8,
+        duration: 0.5,
+        ease: 'power2.in',
+        onComplete: () => {
+          setIdx((i) => (i + 1) % ORBIT_LINES.length)
+          gsap.fromTo(ref.current, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' })
+        },
+      })
+    }, 4200)
+    return () => clearInterval(id)
+  }, [])
+
+  return (
+    <p ref={ref} className="mx-auto mt-8 min-h-[3.5rem] max-w-md font-serif text-sm italic leading-relaxed text-[var(--ink-dim)]/80">
+      {ORBIT_LINES[idx]}
+    </p>
+  )
+}
 
 export function Hero() {
   const { ref, reduced } = useCanvasEffect(() => new Starfield3D(), { trackPointer: true })
@@ -22,7 +59,7 @@ export function Hero() {
       duration: 1,
       ease: 'power4.out',
       delay: 0.2,
-    }).from(subRef.current, { opacity: 0, y: 16, duration: 0.9, ease: 'power3.out' }, '-=0.5')
+    }).fromTo(subRef.current, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, '-=0.5')
     return () => {
       tl.kill()
       split.revert()
@@ -35,7 +72,7 @@ export function Hero() {
       {reduced && <div className="canvas-fallback absolute inset-0" aria-hidden />}
       <div className="relative z-10 px-6 text-center">
         <p className="mb-4 font-mono text-[11px] tracking-[0.4em] text-[var(--ink-dim)]">
-          EXPLORING THE EXISTENCE OF LIFE AND EARTH — HAPPILY
+          FOUR DIMENSIONS · ONE OBSERVER
         </p>
         <h1
           ref={nameRef}
@@ -47,6 +84,7 @@ export function Hero() {
         <p ref={subRef} className="mt-6 font-serif text-lg italic text-[var(--ink-dim)] md:text-xl">
           Computational researcher. Poet. Artist. Drunk on music.
         </p>
+        <OrbitingLine />
       </div>
       <div className="absolute bottom-10 z-10 flex flex-col items-center gap-2 text-[var(--ink-dim)]">
         <p className="font-mono text-[10px] tracking-[0.3em]">CHOOSE A DIMENSION</p>

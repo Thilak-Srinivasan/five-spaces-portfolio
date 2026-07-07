@@ -3,7 +3,7 @@ import gsap from 'gsap'
 import { LINKS } from '../content/links'
 import { C137_NOTE } from '../content/easterEggs'
 import { MilesModal } from './MilesModal'
-import { GithubIcon, LinkedInIcon, MailIcon, MusicIcon } from './Icons'
+import { GithubIcon, InstagramIcon, LinkedInIcon, MailIcon, MusicIcon, PenIcon, PinterestIcon } from './Icons'
 
 export function Footer() {
   const [milesOpen, setMilesOpen] = useState(false)
@@ -51,6 +51,15 @@ export function Footer() {
           </a>
           <a href={LINKS.spotify} target="_blank" rel="noreferrer" data-magnetic aria-label="Spotify" className="transition-colors hover:text-[var(--accent)]">
             <MusicIcon />
+          </a>
+          <a href={LINKS.instagramPoetry.url} target="_blank" rel="noreferrer" data-magnetic aria-label="Instagram poetry — @whispers._in._ink" className="transition-colors hover:text-[var(--accent)]">
+            <InstagramIcon />
+          </a>
+          <a href={LINKS.substack.url} target="_blank" rel="noreferrer" data-magnetic aria-label="Substack — @keeperofquiethearts" className="transition-colors hover:text-[var(--accent)]">
+            <PenIcon />
+          </a>
+          <a href={LINKS.pinterest} target="_blank" rel="noreferrer" data-magnetic aria-label="Pinterest" className="transition-colors hover:text-[var(--accent)]">
+            <PinterestIcon />
           </a>
         </div>
         <p className="max-w-md text-center font-serif text-sm italic leading-relaxed text-[var(--ink-dim)]">

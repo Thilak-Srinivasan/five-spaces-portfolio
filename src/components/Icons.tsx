@@ -46,6 +46,34 @@ export function ArrowLeftIcon({ className = '' }: IconProps) {
   )
 }
 
+export function InstagramIcon({ className = '' }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className={`${base} ${className}`} aria-hidden>
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <path d="M17.2 6.8v.1" strokeLinecap="round" strokeWidth="2.2" />
+    </svg>
+  )
+}
+
+export function PinterestIcon({ className = '' }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className={`${base} ${className}`} aria-hidden>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M10.4 17.5c.4-1.8 1-4.4 1-4.4m.6-5.6c-1.5 0-2.6 1.2-2.6 2.5 0 .8.3 1.3.8 1.6m1.8-4.1c1.7 0 2.8 1.1 2.8 2.6 0 1.9-1 3.4-2.6 3.4-.8 0-1.4-.4-1.6-1" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+export function PenIcon({ className = '' }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className={`${base} ${className}`} aria-hidden>
+      <path d="m4 20 1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19l-4 1Z" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="m14 7 3 3" strokeLinecap="round" />
+    </svg>
+  )
+}
+
 export function MusicIcon({ className = '' }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className={`${base} ${className}`} aria-hidden>

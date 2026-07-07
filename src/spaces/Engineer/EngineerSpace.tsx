@@ -58,9 +58,9 @@ export function EngineerSpace() {
         <section className="min-h-[55vh]">
           <p className="font-mono text-[11px] tracking-[0.35em] text-[var(--accent)]">SECTOR 01 · Δ −0.042</p>
           <h1 data-obstacle className="mt-4 inline-block font-grotesk font-bold leading-[0.95] text-[var(--ink)]" style={{ fontSize: 'clamp(3rem, 8vw, 6.5rem)' }}>
-            I MAKE AIR
+            PERFORMANCE,
             <br />
-            BEHAVE.
+            ENGINEERED.
           </h1>
           <p className="mt-6 max-w-lg font-mono text-sm leading-relaxed text-[var(--ink-dim)]">
             aspiring performance engineer · computational fluid dynamics · aeroacoustics · the kind of person who
@@ -243,7 +243,7 @@ export function EngineerSpace() {
             data-magnetic
             className="group block border border-[var(--ink-dim)]/25 bg-[var(--bg-soft)]/80 p-6 transition-colors hover:border-[var(--accent)]"
           >
-            <p className="font-mono text-[10px] tracking-[0.3em] text-[var(--accent)]">PUBLISHED · READ THE PAPER</p>
+            <p className="font-mono text-[10px] tracking-[0.3em] text-[var(--accent)]">CONFERENCE PAPER · READ IT</p>
             <h3 className="mt-3 font-grotesk font-bold text-[var(--ink)] group-hover:text-[var(--accent)]">
               {PUBLICATION.title} <ExternalIcon className="ml-1 opacity-50" />
             </h3>

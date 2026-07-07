@@ -116,7 +116,7 @@ export const PROJECTS: Project[] = [
     tag: 'AI/ML',
     blurb:
       'Random Forest models forecasting spare-part demand and supply disruptions for S-400, Rafale and Apache platforms. Co-authored and presented at the LEAD 2025 SCM conference.',
-    metric: 'published + presented',
+    metric: 'presented at LEAD 2025',
     github: 'https://github.com/Thilak-Srinivasan/ai-defence-supply-chain',
     paper: 'https://drive.google.com/file/d/1j7YZm5hlzfUjfz9y66tNYGLNLfCXM-jz/view?usp=share_link',
   },
@@ -172,7 +172,7 @@ export const SKILLS = [
 
 export const PUBLICATION = {
   title: 'AI-Based Preventive Maintenance of Equipment & Demand Forecast of Spares',
-  venue: 'LEAD 2025 SCM Conference',
+  venue: 'presented at LEAD 2025 SCM Conference',
   link: 'https://drive.google.com/file/d/1CergY0qVHsykl8NoB2rdYo2Re0HplyNN/view?usp=share_link',
 }
 
