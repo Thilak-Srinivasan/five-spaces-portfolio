@@ -58,7 +58,7 @@ A cinematic, immersive single-page portfolio that presents four facets of one id
   - 2024 — ~74–76k min (steady era)
   - 2025 — 75,309 min · top 2% worldwide · peak Oct 5: 796 min
 - **AI listening-day card:** May 24 2025 — "a bedroom pop labyrinth… 12 hours of gentle loops" — 753 min, 231 tracks, 102 artists (Strawberry Guy → Men I Trust → Beach House → Billie Eilish → Tamil/Malayalam/Hindi pop → XXXTENTACION).
-- **Top artists constellation:** Joji (dominant), Cigarettes After Sex, Weyes Blood, Lithe, OXYBUZ, Tame Impala, Yuvan Shankar Raja, Anirudh Ravichander.
+- **Top artists constellation:** Joji (dominant), Cigarettes After Sex, Weyes Blood, Lithe, OXYBUZ, Tame Impala, april27, Billie Eilish, The Neighbourhood, Asal, Crystal Castles, mehro, Yuvan Shankar Raja, Anirudh Ravichander.
 - **Listening personality:** "The Adventurer" / ENVU card.
 - **Easter egg:** first day on Spotify — April 13 2021, first stream "Black Swan" (BTS), 20,993 songs by 2021.
 - Screenshot story-strip (swipeable) once image files are provided; Spotify profile link.
@@ -68,6 +68,8 @@ A cinematic, immersive single-page portfolio that presents four facets of one id
 - Magnetic cursor with per-space personality (telemetry crosshair / ink dot / graphite / pulse ring).
 - Quote dividers cycling the 10 supplied quotes.
 - Rick nod: clicking a "C-137" footnote triggers a portal-green screen flicker.
+- Miles Morales nod: a hidden "anomaly" easter egg (glitch-styled, Spider-Verse chromatic aberration) that opens Thilak's journal-entry-from-Miles'-perspective as a modal — the "canon event" refusal / "the suit didn't make me Spider-Man. Choosing to wear it did." text, supplied verbatim in `content/easterEggs.ts`. Thematic hook: the anomaly who refuses the canon fits the multiverse/paradox identity.
+- Quiet Connell (Normal People) reference woven into the Poet bio microcopy (the articulate-on-paper, quiet-in-person duality) rather than a named card.
 - ⌘K command overlay for fast travel between spaces.
 - Footer: LinkedIn, GitHub, email, "We only attract what we subconsciously believe we are worthy of receiving."
 
