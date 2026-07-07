@@ -20,6 +20,12 @@ export const SKETCHES: Sketch[] = [
     caption: 'shigaraki · graphite on paper',
     story: 'drawn for the hands, stayed for the horror — grief rendered as texture.',
   },
+  {
+    src: new URL('../assets/sketches/jimin.jpg', import.meta.url).href,
+    alt: 'Pencil sketch of Jimin of BTS wearing round sunglasses, head tilted, sparkles beside him',
+    caption: 'jimin · graphite on paper',
+    story: 'park ji-min, sunglasses indoors — a study in effortless. the sparkles are canon.',
+  },
   { placeholder: true, alt: 'placeholder frame', caption: 'next page intentionally left blank' },
   { placeholder: true, alt: 'placeholder frame', caption: 'in progress — the eye is patient' },
   { placeholder: true, alt: 'placeholder frame', caption: 'reference found, courage pending' },
