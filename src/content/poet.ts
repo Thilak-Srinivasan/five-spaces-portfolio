@@ -128,7 +128,7 @@ export const CREDIT = {
   anthology: 'Daydreaming (anthology)',
   date: 'January 2025',
   note: 'published poet, occasionally in print, permanently in margins.',
-  link: 'https://drive.google.com/file/d/1t5HDTJnmFrN8ceX0dXCD0eVy_JzG1CYN/view?usp=share_link',
+  link: 'https://writerspocket.com/shop/5a3f137c-8d5a-4cb8-9291-485b39392f56',
 }
 
 export const INFLUENCES = {

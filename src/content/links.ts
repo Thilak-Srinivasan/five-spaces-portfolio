@@ -12,5 +12,6 @@ export const LINKS = {
     label: '@keeperofquiethearts',
   },
   pinterest: 'https://in.pinterest.com/sthilak2004/',
+  pinterestSketches: 'https://in.pinterest.com/sthilak2004/sketches/',
   spotify: 'https://open.spotify.com/user/31d5ijl4x55y2xn3ftsjchrbrciy?si=2ad0c0942aa542d4',
 }

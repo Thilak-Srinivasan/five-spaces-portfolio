@@ -62,7 +62,7 @@ export function ArtistSpace() {
         {/* pinterest reference board */}
         <section className="mx-auto max-w-md">
           <a
-            href={LINKS.pinterest}
+            href={LINKS.pinterestSketches}
             target="_blank"
             rel="noreferrer"
             data-magnetic
