@@ -42,8 +42,11 @@ export function SketchTile({ sketch }: { sketch: Sketch }) {
         )}
       </div>
       {!isPlaceholder && (
-        <figcaption className="mt-2 font-mono text-[10px] tracking-[0.25em] text-[var(--ink-dim)]">
-          {sketch.caption}
+        <figcaption className="mt-2">
+          <p className="font-mono text-[10px] tracking-[0.25em] text-[var(--ink-dim)]">{sketch.caption}</p>
+          {sketch.story && (
+            <p className="mt-1 font-serif text-sm italic leading-relaxed text-[var(--ink-dim)]/80">{sketch.story}</p>
+          )}
         </figcaption>
       )}
     </figure>

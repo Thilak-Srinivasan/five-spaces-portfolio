@@ -1,32 +1,35 @@
-# React + TypeScript + Vite
+# The Four Spaces — Thilak S
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Experiential portfolio: **The Engineer · The Poet · The Artist · The Audiophile**.
+Vite + React + Tailwind, GSAP (ScrollTrigger/SplitText), Lenis smooth scroll, Three.js starfield, hand-rolled canvas effects (wind tunnel, rain drift, graphite trail, waveform).
 
-Currently, two official plugins are available:
+## Run
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # production build in dist/
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Deep links: `#/engineer` `#/poet` `#/artist` `#/audiophile`. Press **⌘K / Ctrl+K** for fast travel.
+
+## Dropping in real assets
+
+The site works with styled placeholders until files exist — missing images degrade gracefully.
+
+1. **Sketches** → put image files in `src/assets/sketches/` and edit the manifest in
+   [`src/content/artist.ts`](src/content/artist.ts) (`src`, `caption`, `story` per sketch).
+   Current expected filenames: `portrait-study.jpg`, `shigaraki.jpg`.
+2. **Spotify Wrapped screenshots** → put files in `src/assets/wrapped/` and edit
+   [`src/content/audiophile.ts`](src/content/audiophile.ts) (`WRAPPED_SHOTS`).
+   Expected: `2022-minutes.jpg`, `2023-minutes.jpg`, `2025-minutes.jpg`, `adventurer.jpg`, `listening-day.jpg`.
+3. **Poems** → replace the placeholder verses in `INTERLUDES` inside
+   [`src/content/poet.ts`](src/content/poet.ts) with published lines.
+
+All copy, project data, links, quotes and easter-egg text live in `src/content/` — edit text there without touching components.
+
+## Easter eggs
+
+- Footer `dimension C-137` → portal flicker.
+- Footer `anomaly?` → the Miles Morales journal modal.
+- Audiophile: tap the `first day on spotify` chip.

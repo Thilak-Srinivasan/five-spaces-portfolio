@@ -2,7 +2,9 @@ import { useEffect, useRef, useState } from 'react'
 import { WindTunnel } from '../../canvas/WindTunnel'
 import { useCanvasEffect } from '../../canvas/useCanvasEffect'
 import { QuoteDivider } from '../../components/QuoteDivider'
-import { CERTS, EDUCATION, EXPERIENCE, PROJECTS, PUBLICATION, SKILLS } from '../../content/engineer'
+import { CountUp } from '../../components/CountUp'
+import { ExternalIcon, GithubIcon } from '../../components/Icons'
+import { CERTS, CV_URL, EDUCATION, EXPERIENCE, PROJECTS, PUBLICATION, SKILLS, STATS } from '../../content/engineer'
 import type { ProjectTag } from '../../content/engineer'
 
 const TAGS: Array<ProjectTag | 'ALL'> = ['ALL', 'CFD', 'Thermal', 'AI/ML', 'Robotics', 'Finance', 'Manufacturing']
@@ -64,10 +66,44 @@ export function EngineerSpace() {
             aspiring performance engineer · computational fluid dynamics · aeroacoustics · the kind of person who
             watches an F1 onboard for the telemetry overlay
           </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href={CV_URL}
+              target="_blank"
+              rel="noreferrer"
+              data-magnetic
+              className="bg-[var(--accent)] px-6 py-2.5 font-mono text-xs font-bold tracking-widest text-[var(--bg)] transition-transform hover:scale-105"
+            >
+              DOWNLOAD CV ↓
+            </a>
+            <a
+              href="https://github.com/Thilak-Srinivasan"
+              target="_blank"
+              rel="noreferrer"
+              data-magnetic
+              className="flex items-center gap-2 border border-[var(--ink-dim)]/40 px-6 py-2.5 font-mono text-xs tracking-widest text-[var(--ink-dim)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
+            >
+              <GithubIcon /> GITHUB
+            </a>
+          </div>
         </section>
 
-        {/* education */}
-        <section className="mt-10 grid gap-6 md:grid-cols-2">
+        {/* wrapped-style stat band */}
+        <section className="mt-8 grid gap-10 border-y border-[var(--ink-dim)]/20 py-14 sm:grid-cols-2 lg:grid-cols-4">
+          {STATS.map((s) => (
+            <div key={s.label} className="text-center">
+              <p className="font-grotesk font-bold leading-none text-[var(--ink)]" style={{ fontSize: 'clamp(2.4rem, 5vw, 3.6rem)' }}>
+                {s.prefix && <span className="text-[0.5em] text-[var(--accent2)]">{s.prefix}</span>}
+                <CountUp value={s.value} decimals={s.decimals} />
+                {s.suffix && <span className="text-[0.55em] text-[var(--accent)]">{s.suffix}</span>}
+              </p>
+              <p className="mx-auto mt-3 max-w-[210px] font-mono text-[11px] leading-relaxed text-[var(--ink-dim)]">{s.label}</p>
+            </div>
+          ))}
+        </section>
+
+        {/* education + current lap */}
+        <section className="mt-16 grid gap-6 md:grid-cols-2">
           <div data-obstacle className="border border-[var(--ink-dim)]/25 bg-[var(--bg-soft)]/80 p-6 backdrop-blur-sm">
             <p className="font-mono text-[10px] tracking-[0.3em] text-[var(--ink-dim)]">EDUCATION</p>
             <h2 className="mt-3 font-grotesk text-xl font-bold text-[var(--ink)]">{EDUCATION.degree}</h2>
@@ -75,6 +111,9 @@ export function EngineerSpace() {
               {EDUCATION.school} · {EDUCATION.years}
             </p>
             <p className="mt-1 font-mono text-xs text-[var(--accent)]">{EDUCATION.minor}</p>
+            <p className="mt-4 text-sm leading-relaxed text-[var(--ink-dim)]">
+              Five years, two degrees, one obsession: the mathematics is not a side quest — it is why the solvers converge.
+            </p>
           </div>
           <div data-obstacle className="border border-[var(--accent)]/40 bg-[var(--bg-soft)]/80 p-6 backdrop-blur-sm">
             <p className="font-mono text-[10px] tracking-[0.3em] text-[var(--accent)]">CURRENT LAP</p>
@@ -97,7 +136,12 @@ export function EngineerSpace() {
                   <h3 className="font-grotesk font-bold text-[var(--ink)]">
                     {e.role} <span className="font-normal text-[var(--ink-dim)]">— {e.org}</span>
                   </h3>
-                  <p className="mt-0.5 text-sm text-[var(--ink-dim)]">{e.detail}</p>
+                  <p className="mt-0.5 text-sm leading-relaxed text-[var(--ink-dim)]">{e.detail}</p>
+                  {e.report && (
+                    <a href={e.report} target="_blank" rel="noreferrer" data-magnetic className="mt-1 inline-flex items-center gap-1 font-mono text-[10px] tracking-widest text-[var(--accent)] hover:underline">
+                      READ REPORT <ExternalIcon className="!h-3 !w-3" />
+                    </a>
+                  )}
                 </div>
                 <span className="ml-auto shrink-0 font-mono text-[11px] text-[var(--ink-dim)]/70">{e.dates}</span>
               </div>
@@ -108,7 +152,12 @@ export function EngineerSpace() {
         {/* projects */}
         <section className="mt-24">
           <div className="flex flex-wrap items-baseline justify-between gap-4">
-            <h2 className="font-grotesk text-3xl font-bold text-[var(--ink)]">THE GRID</h2>
+            <div>
+              <h2 className="font-grotesk text-3xl font-bold text-[var(--ink)]">THE GRID</h2>
+              <p className="mt-2 max-w-md font-mono text-xs leading-relaxed text-[var(--ink-dim)]">
+                nine projects, each with the receipts attached — click through to the code or the paper.
+              </p>
+            </div>
             <div className="flex flex-wrap gap-2">
               {TAGS.map((t) => (
                 <button
@@ -131,17 +180,43 @@ export function EngineerSpace() {
               <article
                 key={p.title}
                 data-obstacle
-                data-magnetic
-                className="group border border-[var(--ink-dim)]/25 bg-[var(--bg-soft)]/80 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent)]/70"
+                className="group flex flex-col border border-[var(--ink-dim)]/25 bg-[var(--bg-soft)]/80 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent)]/70"
               >
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-[10px] tracking-[0.25em] text-[var(--accent2)]">{p.tag}</span>
-                  {p.metric && <span className="font-mono text-[10px] text-[var(--ink-dim)]">{p.metric}</span>}
+                  {p.metric && <span className="text-right font-mono text-[10px] text-[var(--ink-dim)]">{p.metric}</span>}
                 </div>
                 <h3 className="mt-3 font-grotesk text-lg font-bold leading-snug text-[var(--ink)] group-hover:text-[var(--accent)]">
                   {p.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-[var(--ink-dim)]">{p.blurb}</p>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-[var(--ink-dim)]">{p.blurb}</p>
+                <div className="mt-4 flex gap-3 border-t border-[var(--ink-dim)]/15 pt-3">
+                  {p.github && (
+                    <a
+                      href={p.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      data-magnetic
+                      className="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-widest text-[var(--ink-dim)] transition-colors hover:text-[var(--accent)]"
+                    >
+                      <GithubIcon className="!h-3.5 !w-3.5" /> CODE
+                    </a>
+                  )}
+                  {p.paper && (
+                    <a
+                      href={p.paper}
+                      target="_blank"
+                      rel="noreferrer"
+                      data-magnetic
+                      className="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-widest text-[var(--ink-dim)] transition-colors hover:text-[var(--accent)]"
+                    >
+                      <ExternalIcon className="!h-3.5 !w-3.5" /> PAPER
+                    </a>
+                  )}
+                  {!p.github && !p.paper && (
+                    <span className="font-mono text-[10px] tracking-widest text-[var(--ink-dim)]/50">HANDS-ON — NO REPO, ONLY CHIPS</span>
+                  )}
+                </div>
               </article>
             ))}
           </div>
@@ -160,17 +235,33 @@ export function EngineerSpace() {
 
         {/* publication + certs */}
         <section className="mt-16 grid gap-6 md:grid-cols-2">
-          <div data-obstacle className="border border-[var(--ink-dim)]/25 bg-[var(--bg-soft)]/80 p-6">
-            <p className="font-mono text-[10px] tracking-[0.3em] text-[var(--accent)]">PUBLISHED</p>
-            <h3 className="mt-3 font-grotesk font-bold text-[var(--ink)]">{PUBLICATION.title}</h3>
+          <a
+            href={PUBLICATION.link}
+            target="_blank"
+            rel="noreferrer"
+            data-obstacle
+            data-magnetic
+            className="group block border border-[var(--ink-dim)]/25 bg-[var(--bg-soft)]/80 p-6 transition-colors hover:border-[var(--accent)]"
+          >
+            <p className="font-mono text-[10px] tracking-[0.3em] text-[var(--accent)]">PUBLISHED · READ THE PAPER</p>
+            <h3 className="mt-3 font-grotesk font-bold text-[var(--ink)] group-hover:text-[var(--accent)]">
+              {PUBLICATION.title} <ExternalIcon className="ml-1 opacity-50" />
+            </h3>
             <p className="mt-1 font-mono text-xs text-[var(--ink-dim)]">{PUBLICATION.venue}</p>
-          </div>
+          </a>
           <div className="p-6">
-            <p className="font-mono text-[10px] tracking-[0.3em] text-[var(--ink-dim)]">TELEMETRY LOG</p>
+            <p className="font-mono text-[10px] tracking-[0.3em] text-[var(--ink-dim)]">TELEMETRY LOG — VERIFIED</p>
             <ul className="mt-3 space-y-2 text-sm text-[var(--ink-dim)]">
               {CERTS.map((c) => (
-                <li key={c}>
-                  <span className="text-[var(--accent)]">▸</span> {c}
+                <li key={c.label}>
+                  <span className="text-[var(--accent)]">▸</span>{' '}
+                  {c.link ? (
+                    <a href={c.link} target="_blank" rel="noreferrer" data-magnetic className="transition-colors hover:text-[var(--accent)] hover:underline">
+                      {c.label}
+                    </a>
+                  ) : (
+                    c.label
+                  )}
                 </li>
               ))}
             </ul>

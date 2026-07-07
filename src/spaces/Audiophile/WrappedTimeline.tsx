@@ -1,45 +1,7 @@
-import { useEffect, useRef } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { JUMP_NOTE, WRAPPED } from '../../content/audiophile'
-import { prefersReducedMotion } from '../../canvas/useCanvasEffect'
-
-gsap.registerPlugin(ScrollTrigger)
+import { CountUp } from '../../components/CountUp'
 
 const BAND_COLORS = ['#c8ff3e', '#ff4fa3', '#7c3aed']
-
-function CountUp({ value, approx }: { value: number; approx?: boolean }) {
-  const ref = useRef<HTMLSpanElement>(null)
-
-  useEffect(() => {
-    const el = ref.current!
-    if (prefersReducedMotion()) {
-      el.textContent = value.toLocaleString('en-IN')
-      return
-    }
-    const counter = { v: 0 }
-    const tween = gsap.to(counter, {
-      v: value,
-      duration: 1.8,
-      ease: 'power3.out',
-      scrollTrigger: { trigger: el, start: 'top 85%' },
-      onUpdate: () => {
-        el.textContent = Math.round(counter.v).toLocaleString('en-IN')
-      },
-    })
-    return () => {
-      tween.scrollTrigger?.kill()
-      tween.kill()
-    }
-  }, [value])
-
-  return (
-    <span>
-      {approx && <span className="mr-1 align-top font-mono text-xl text-[var(--ink-dim)]">~</span>}
-      <span ref={ref}>0</span>
-    </span>
-  )
-}
 
 export function WrappedTimeline() {
   return (
