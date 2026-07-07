@@ -28,9 +28,11 @@ export const INTERLUDES: Interlude[] = [
   },
   {
     lines: [
-      'if it must ache, let it ache forward.',
-      'no feeling is final.',
-      'not even this one.',
+      'i am learning to let things end',
+      'without auditing what they owed me —',
+      'to hold the ache the way the sky holds weather:',
+      'completely, and then not at all.',
+      'no feeling is final. not even this one.',
     ],
   },
 ]

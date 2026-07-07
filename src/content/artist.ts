@@ -30,9 +30,9 @@ export const ARTIST_INTRO =
   'a high-end sketchbook — slightly chaotic, fully curated. graphite first, opinions later.'
 
 export const PRACTICE: string[] = [
-  'I draw in pencil because pencil forgives. Every sketch here survived an eraser fight — the Apsara non-dust is a collaborator, not a tool.',
+  'I draw in pencil because pencil forgives. Every sketch here survived an eraser fight — and the eraser is a collaborator, not a correction.',
   'Portraits mostly: faces from film stills, anime frames that hit harder than they had any right to, strangers with good bone structure. The subject matters less than the shadow map — I am, at heart, someone who studies how things flow, and light over a cheekbone is just another boundary layer.',
   'The process is the same as the engineering: reference, rough pass, refinement, and knowing when to stop before you polish the life out of it.',
 ]
 
-export const TOOLS_LINE = 'apsara pencils · non-dust eraser · whatever paper is nearest · patience, intermittently'
+export const TOOLS_LINE = 'graphite, every grade · one loyal eraser · whatever paper is nearest · patience, intermittently'

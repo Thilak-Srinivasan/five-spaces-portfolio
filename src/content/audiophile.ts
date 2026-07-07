@@ -9,8 +9,8 @@ export interface WrappedYear {
 export const WRAPPED: WrappedYear[] = [
   { year: 2022, minutes: 15716, note: 'more than 94% of listeners in India' },
   { year: 2023, minutes: 76130, note: 'top 2% of listeners worldwide', peak: 'peak: July 9 · 827 minutes' },
-  { year: 2024, minutes: 75000, approx: true, note: 'the steady era — the ear never left' },
-  { year: 2025, minutes: 75309, note: 'top 2% of listeners worldwide', peak: 'peak: October 5 · 796 minutes' },
+  { year: 2024, minutes: 75309, note: 'top 2% of listeners worldwide', peak: 'peak: October 5 · 796 minutes' },
+  { year: 2025, minutes: 74121, note: 'that’s 51 days — the ear never left' },
 ]
 
 export const JUMP_NOTE = 'the year everything got louder — ×4.8'
@@ -68,7 +68,8 @@ export interface WrappedShot {
 export const WRAPPED_SHOTS: WrappedShot[] = [
   { src: new URL('../assets/wrapped/2022-minutes.jpg', import.meta.url).href, alt: '2022 Wrapped — 15,716 minutes' },
   { src: new URL('../assets/wrapped/2023-minutes.jpg', import.meta.url).href, alt: '2023 Wrapped — 76,130 minutes, top 2% worldwide' },
-  { src: new URL('../assets/wrapped/2025-minutes.jpg', import.meta.url).href, alt: '2025 Wrapped — 75,309 minutes, top 2% worldwide' },
+  { src: new URL('../assets/wrapped/2024-minutes.jpg', import.meta.url).href, alt: '2024 Wrapped — 75,309 minutes, top 2% worldwide' },
+  { src: new URL('../assets/wrapped/2025-minutes.jpg', import.meta.url).href, alt: '2025 Wrapped — 74,121 minutes, 51 days of music' },
   { src: new URL('../assets/wrapped/adventurer.jpg', import.meta.url).href, alt: 'Listening personality — The Adventurer' },
   { src: new URL('../assets/wrapped/listening-day.jpg', import.meta.url).href, alt: 'Biggest listening day — May 24, 2025' },
 ]

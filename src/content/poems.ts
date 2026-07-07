@@ -29,6 +29,7 @@ export const POEMS: Poem[] = [
     lines: [
       'life isn’t lived so much as felt in fragments — in hues, in moments that stay long after they’ve technically ended. the quiet warmth of dusk is one of them: that hour when the sky lowers its voice and everything ordinary becomes briefly cosmic.',
       'i keep those pieces. i don’t know where else they would go.',
+      'someday all of this will be one photograph i can’t stop describing to strangers. for now it is just a tuesday, golden at the edges, and i am here for it — fully, foolishly here.',
     ],
   },
   {
@@ -42,6 +43,10 @@ export const POEMS: Poem[] = [
       '',
       'even unfinished stories leave their ink on the heart.',
       'especially those.',
+      '',
+      'we never happened. still,',
+      'i measure every door',
+      'against the one we didn’t open.',
     ],
   },
   {
@@ -88,11 +93,17 @@ export const POEMS: Poem[] = [
   },
   {
     title: 'storm etiquette',
-    kind: 'fragment',
+    kind: 'stanza',
     lines: [
-      'in the midst of the storm, find your rhythm and dance.',
-      'life was never a canvas of endless sunshine —',
-      'it is a tapestry, and the rain is also thread.',
+      'nobody teaches you storm etiquette —',
+      'that when the sky splits open mid-song',
+      'you are allowed to keep dancing,',
+      'that drenched is also a way of being dressed.',
+      '',
+      'life was never a canvas of endless sunshine.',
+      'it is a tapestry, and the rain is also thread —',
+      'gold, some of it. you’ll see.',
+      'but only later, and only if you kept moving.',
     ],
   },
   {
@@ -140,12 +151,17 @@ export const POEMS: Poem[] = [
   },
   {
     title: 'eight slices',
-    kind: 'fragment',
+    kind: 'stanza',
     lines: [
       'you cut apples into eight slices, smiling,',
       '“this is enough. it always was.”',
       'and i, who had been pricing the whole orchard,',
       'finally believed you.',
+      '',
+      'abundance was never the orchard.',
+      'it was the plate, passed across the table,',
+      'and your hand, unhurried,',
+      'letting me take the bigger half.',
     ],
   },
   {
@@ -196,11 +212,17 @@ export const POEMS: Poem[] = [
   },
   {
     title: 'meeting yourself',
-    kind: 'fragment',
+    kind: 'stanza',
     lines: [
       'you have not met yourself, not yet —',
       'not until the room goes quiet',
       'and no one else is writing your lines.',
+      '',
+      'sit there. stay past the discomfort,',
+      'past the urge to borrow someone else’s voice.',
+      'whoever shows up when nothing is performing —',
+      'learn their name.',
+      'it was always yours.',
     ],
   },
 ]
