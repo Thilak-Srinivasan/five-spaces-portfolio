@@ -70,7 +70,7 @@ export function AudiophileSpace() {
 
       <div className="relative z-10 mx-auto max-w-4xl px-6 pb-24 pt-36">
         {/* hero */}
-        <section className="min-h-[45vh] text-center">
+        <section className="text-center">
           <p className="font-mono text-[11px] tracking-[0.4em] text-[var(--accent2)]">VOLUME: PERSONALITY</p>
           <h1 className="mt-4 font-grotesk font-bold leading-none text-[var(--ink)]" style={{ fontSize: 'clamp(3.2rem, 10vw, 7rem)' }}>
             DRUNK ON
@@ -83,7 +83,7 @@ export function AudiophileSpace() {
         </section>
 
         {/* the listener, in person */}
-        <section className="mt-10 flex justify-center">
+        <section className="mt-12 flex justify-center">
           <img
             src={jojiThilak}
             alt="Thilak at a Joji show"

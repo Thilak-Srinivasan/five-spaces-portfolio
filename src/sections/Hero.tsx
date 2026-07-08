@@ -89,7 +89,7 @@ export function Hero() {
         <img
           src={introImg}
           alt="Thilak S"
-          className="mx-auto mt-8 h-40 w-40 rounded-full border border-[var(--accent)]/40 object-cover shadow-[0_0_50px_-10px_rgba(46,111,255,0.45)] md:h-48 md:w-48"
+          className="mx-auto mt-8 max-h-56 w-auto max-w-[85vw] rounded-md border border-[var(--accent)]/40 object-contain shadow-[0_0_50px_-10px_rgba(46,111,255,0.45)] md:max-h-64"
         />
       </div>
       <div className="absolute bottom-10 z-10 flex flex-col items-center gap-2 text-[var(--ink-dim)]">

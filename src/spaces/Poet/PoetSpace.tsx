@@ -70,7 +70,7 @@ export function PoetSpace() {
             />
           </div>
           {INTERLUDES.map((interlude, i) => (
-            <section key={i} className="mx-auto my-[35vh] max-w-xl">
+            <section key={i} className="mx-auto my-[18vh] max-w-xl">
               <div className="space-y-3">
                 {interlude.lines.map((line, j) => (
                   <TypeLine key={j} text={line} className="font-serif text-xl leading-relaxed text-[var(--ink)] md:text-2xl" />
@@ -84,7 +84,7 @@ export function PoetSpace() {
         </div>
 
         {/* the notebook — click the edges, it turns */}
-        <section className="mt-24">
+        <section className="mt-10">
           <SectionLabel>{NOTEBOOK_TITLE}</SectionLabel>
           <p className="mx-auto mb-12 max-w-md text-center font-serif italic leading-relaxed text-[var(--ink-dim)]">
             {NOTEBOOK_NOTE}

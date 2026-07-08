@@ -5,6 +5,7 @@ import { ExternalIcon } from '../../components/Icons'
 import { ARTIST_INTRO, PRACTICE, SKETCHES, TOOLS_LINE } from '../../content/artist'
 import { LINKS } from '../../content/links'
 import { SketchTile } from './SketchTile'
+import theEye from '../../assets/extras/the-eye.jpg'
 
 export function ArtistSpace() {
   const { ref, reduced } = useCanvasEffect(() => new GraphiteTrail(), { trackPointer: true })
@@ -37,7 +38,13 @@ export function ArtistSpace() {
               <p className="font-mono text-[10px] tracking-[0.35em] text-[var(--ink-dim)]">THE KIT</p>
               <p className="mt-4 font-serif text-lg italic leading-relaxed text-[var(--ink)]">{TOOLS_LINE}</p>
             </div>
-            <p className="mt-8 font-mono text-[10px] leading-relaxed tracking-widest text-[var(--ink-dim)]/60">
+            <img
+              src={theEye}
+              alt="The artist's desk — pencils, eraser, paper"
+              loading="lazy"
+              className="my-6 w-full rounded-sm border border-[var(--ink-dim)]/25 object-cover opacity-90 grayscale-[0.3] transition-all duration-700 hover:opacity-100 hover:grayscale-0"
+            />
+            <p className="font-mono text-[10px] leading-relaxed tracking-widest text-[var(--ink-dim)]/60">
               LIGHT OVER A CHEEKBONE
               <br />
               IS JUST ANOTHER
