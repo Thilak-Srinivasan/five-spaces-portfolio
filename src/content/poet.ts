@@ -42,6 +42,7 @@ export interface ShelfPiece {
   title: string
   source: string
   url: string
+  thumb?: string // cover image in src/assets/shelf/ — card hides it gracefully if missing
   line: string // the line that stays
   note: string // why it stays, in Thilak's register
 }
@@ -51,6 +52,7 @@ export const SHELF: ShelfPiece[] = [
     title: 'Dostoevsky Was Right',
     source: 'yearly blues · Substack',
     url: 'https://yearlyblues.substack.com/p/dostoevsky-was-right',
+    thumb: new URL('../assets/shelf/dostoevsky-was-right.jpg', import.meta.url).href,
     line: '“My hosanna is born of a furnace of doubt.”',
     note: 'real faith isn’t certainty — it’s surviving enough grief to still kneel at something. and believing, against evidence, that no feeling is final.',
   },
@@ -58,6 +60,7 @@ export const SHELF: ShelfPiece[] = [
     title: 'The Pain of Infinite Options',
     source: 'for the record · Substack',
     url: 'https://fortherecordink.substack.com/p/the-pain-of-infinite-options',
+    thumb: new URL('../assets/shelf/pain-of-infinite-options.jpg', import.meta.url).href,
     line: '“It’s not choosing that exhausts us. It’s imagining every life we didn’t choose.”',
     note: 'oh boy, the paradox of choice. we only need to be one person — I re-learn this monthly.',
   },
@@ -65,6 +68,7 @@ export const SHELF: ShelfPiece[] = [
     title: 'The Art of Being Unreachable',
     source: 'the muse and the melody · Substack',
     url: 'https://themuseandthemelody.substack.com/p/the-art-of-being-unreachable',
+    thumb: new URL('../assets/shelf/art-of-being-unreachable.jpg', import.meta.url).href,
     line: '“Seduction is not about being seen. It is about being felt after you leave.”',
     note: 'a rich inner life is the only magnetism that doesn’t expire.',
   },
@@ -72,6 +76,7 @@ export const SHELF: ShelfPiece[] = [
     title: 'The Slow Burn of Becoming Yourself',
     source: 'janelle dodo · Substack',
     url: 'https://janelledodo.substack.com/p/the-slow-burn-of-becoming-yourself',
+    thumb: new URL('../assets/shelf/slow-burn-of-becoming.jpg', import.meta.url).href,
     line: '“The river does not stop to ask what it is; it just flows.”',
     note: 'identity as a process, not a verdict. the questioning is the point.',
   },
@@ -79,6 +84,7 @@ export const SHELF: ShelfPiece[] = [
     title: 'The Paradox of Craving to Be Seen',
     source: 'cupidity · Substack',
     url: 'https://cupidity.substack.com/p/the-paradox-of-craving-to-be-seen',
+    thumb: new URL('../assets/shelf/craving-to-be-seen.jpg', import.meta.url).href,
     line: 'wanting to be witnessed, and hiding from the witness.',
     note: 'the quiet-person dilemma, written down by someone braver.',
   },
@@ -86,6 +92,7 @@ export const SHELF: ShelfPiece[] = [
     title: 'When I Lost Faith in Love',
     source: 'with love, anonymous · Substack',
     url: 'https://withloveanonymousxx.substack.com/p/when-i-lost-faith-in-love',
+    thumb: new URL('../assets/shelf/lost-faith-in-love.jpg', import.meta.url).href,
     line: '“I didn’t lose a thing. I lost myself. Or maybe I became someone new.”',
     note: 'heartbreak isn’t just breaking — it’s building something new out of what’s left.',
   },
@@ -93,6 +100,7 @@ export const SHELF: ShelfPiece[] = [
     title: 'America Was the Loss of My Life',
     source: 'with love, anonymous · Substack',
     url: 'https://withloveanonymousxx.substack.com/p/america-was-the-loss-of-my-life',
+    thumb: new URL('../assets/shelf/america-loss-of-my-life.jpg', import.meta.url).href,
     line: '“Life doesn’t always have to get better, but it does have to go on.”',
     note: 'two slips of paper against fourteen years of work — and persistence anyway.',
   },
@@ -100,6 +108,7 @@ export const SHELF: ShelfPiece[] = [
     title: 'love as a form of madness i keep choosing',
     source: 'blank space poet · Substack',
     url: 'https://blankspacepoet.substack.com/p/love-as-a-form-of-madness-i-keep',
+    thumb: new URL('../assets/shelf/love-as-madness.jpg', import.meta.url).href,
     line: '“if it hurts, then it must be real” — the distortion, named.',
     note: 'intensity is not intimacy. I underline this and forget it, in that order.',
   },
@@ -107,6 +116,7 @@ export const SHELF: ShelfPiece[] = [
     title: 'Unrot Your Brain',
     source: 'plum pits · Substack',
     url: 'https://plumpits.substack.com/p/unrot-your-brain',
+    thumb: new URL('../assets/shelf/unrot-your-brain.jpg', import.meta.url).href,
     line: '“No one warns you how easy it is to slip from rest into rot.”',
     note: 'who are we underneath all the constant consumption and borrowed opinions? your brain is still yours.',
   },
@@ -114,6 +124,7 @@ export const SHELF: ShelfPiece[] = [
     title: 'The Divine Scar',
     source: 'not an echo, but a voice · WordPress',
     url: 'https://notanechobutavoice.wordpress.com/',
+    thumb: new URL('../assets/shelf/divine-scar.jpg', import.meta.url).href,
     line: '“Be you in this world of echoes.”',
     note: 'poetry that treats mythology as a lens for grief — autumn into winter into spring.',
   },

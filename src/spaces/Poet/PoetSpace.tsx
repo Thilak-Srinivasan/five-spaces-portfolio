@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { RainDrift } from '../../canvas/RainDrift'
 import { useCanvasEffect } from '../../canvas/useCanvasEffect'
 import { ExternalIcon } from '../../components/Icons'
@@ -7,6 +8,21 @@ import { NOTEBOOK_NOTE, NOTEBOOK_TITLE } from '../../content/poems'
 import { LINKS } from '../../content/links'
 import { TypeLine } from './TypeLine'
 import { PoetryNotebook } from './PoetryNotebook'
+
+/** Shelf cover thumbnail; renders nothing until the image file exists. */
+function ShelfThumb({ src, title }: { src?: string; title: string }) {
+  const [failed, setFailed] = useState(false)
+  if (!src || failed) return null
+  return (
+    <img
+      src={src}
+      alt={`Cover — ${title}`}
+      loading="lazy"
+      onError={() => setFailed(true)}
+      className="h-20 w-20 shrink-0 rounded-sm border border-[var(--ink-dim)]/25 object-cover opacity-80 grayscale-[0.4] transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 md:h-24 md:w-24"
+    />
+  )
+}
 
 function SectionLabel({ children }: { children: string }) {
   return (
@@ -83,15 +99,20 @@ export function PoetSpace() {
                 data-magnetic
                 className="group block border border-[var(--ink-dim)]/20 bg-[var(--bg-soft)]/60 p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--accent)]/60"
               >
-                <div className="flex items-baseline justify-between gap-4">
-                  <h3 className="font-serif text-xl italic text-[var(--ink)] transition-colors group-hover:text-[var(--accent)]">
-                    {piece.title}
-                  </h3>
-                  <ExternalIcon className="shrink-0 text-[var(--ink-dim)] opacity-40 transition-opacity group-hover:opacity-100" />
+                <div className="flex items-start gap-5">
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-baseline justify-between gap-4">
+                      <h3 className="font-serif text-xl italic text-[var(--ink)] transition-colors group-hover:text-[var(--accent)]">
+                        {piece.title}
+                      </h3>
+                      <ExternalIcon className="shrink-0 text-[var(--ink-dim)] opacity-40 transition-opacity group-hover:opacity-100" />
+                    </div>
+                    <p className="mt-1 font-mono text-[10px] tracking-[0.25em] text-[var(--ink-dim)]/70">{piece.source}</p>
+                    <p className="mt-4 font-serif text-[17px] leading-relaxed text-[var(--ink)]/90">{piece.line}</p>
+                    <p className="mt-2 font-serif text-sm italic leading-relaxed text-[var(--ink-dim)]">{piece.note}</p>
+                  </div>
+                  <ShelfThumb src={piece.thumb} title={piece.title} />
                 </div>
-                <p className="mt-1 font-mono text-[10px] tracking-[0.25em] text-[var(--ink-dim)]/70">{piece.source}</p>
-                <p className="mt-4 font-serif text-[17px] leading-relaxed text-[var(--ink)]/90">{piece.line}</p>
-                <p className="mt-2 font-serif text-sm italic leading-relaxed text-[var(--ink-dim)]">{piece.note}</p>
               </a>
             ))}
           </div>

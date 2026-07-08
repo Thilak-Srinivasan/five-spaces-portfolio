@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Waveform } from '../../canvas/Waveform'
 import { useCanvasEffect } from '../../canvas/useCanvasEffect'
 import { QuoteDivider } from '../../components/QuoteDivider'
-import { ExternalIcon, MusicIcon } from '../../components/Icons'
+import { ExternalIcon, SpotifyIcon } from '../../components/Icons'
 import { FIRST_DAY, LISTENING_DAY, PERSONALITY, WRAPPED_SHOTS } from '../../content/audiophile'
 import { LINKS } from '../../content/links'
 import { WrappedTimeline } from './WrappedTimeline'
@@ -140,7 +140,7 @@ export function AudiophileSpace() {
             data-magnetic
             className="group flex items-center gap-3 rounded-full bg-[var(--accent)] px-7 py-3 font-grotesk font-bold text-[var(--bg)] transition-transform hover:scale-105"
           >
-            <MusicIcon /> follow the sound <ExternalIcon />
+            <SpotifyIcon /> follow the sound <ExternalIcon />
           </a>
         </section>
       </div>
