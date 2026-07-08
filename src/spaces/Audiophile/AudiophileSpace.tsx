@@ -7,6 +7,7 @@ import { FIRST_DAY, LISTENING_DAY, PERSONALITY, WRAPPED_SHOTS } from '../../cont
 import { LINKS } from '../../content/links'
 import { WrappedTimeline } from './WrappedTimeline'
 import { ArtistConstellation } from './ArtistConstellation'
+import jojiThilak from '../../assets/extras/joji-thilak.jpg'
 
 function WrappedStrip() {
   const [failed, setFailed] = useState<Set<number>>(new Set())
@@ -79,6 +80,16 @@ export function AudiophileSpace() {
           <p className="mx-auto mt-6 max-w-md font-serif text-lg italic text-[var(--ink-dim)]">
             heavy listener, casual singer, professional last-song-repeater.
           </p>
+        </section>
+
+        {/* the listener, in person */}
+        <section className="mt-10 flex justify-center">
+          <img
+            src={jojiThilak}
+            alt="Thilak at a Joji show"
+            loading="lazy"
+            className="max-h-[420px] w-auto max-w-full rotate-[-1.5deg] rounded-md border border-[var(--ink-dim)]/30 object-contain shadow-[0_20px_60px_-20px_rgba(200,255,62,0.25)]"
+          />
         </section>
 
         {/* wrapped timeline */}

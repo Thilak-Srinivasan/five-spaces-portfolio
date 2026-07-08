@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
 import { Starfield3D } from '../canvas/Starfield3D'
 import { useCanvasEffect, prefersReducedMotion } from '../canvas/useCanvasEffect'
+import introImg from '../assets/extras/intro-page.jpg'
 
 gsap.registerPlugin(SplitText)
 
@@ -82,9 +83,14 @@ export function Hero() {
           THILAK S
         </h1>
         <p ref={subRef} className="mt-6 font-serif text-lg italic text-[var(--ink-dim)] md:text-xl">
-          Computational researcher. Poet. Artist. Drunk on music.
+          Computational researcher. Poet. Artist. Music aficionado.
         </p>
         <OrbitingLine />
+        <img
+          src={introImg}
+          alt="Thilak S"
+          className="mx-auto mt-8 h-40 w-40 rounded-full border border-[var(--accent)]/40 object-cover shadow-[0_0_50px_-10px_rgba(46,111,255,0.45)] md:h-48 md:w-48"
+        />
       </div>
       <div className="absolute bottom-10 z-10 flex flex-col items-center gap-2 text-[var(--ink-dim)]">
         <p className="font-mono text-[10px] tracking-[0.3em]">CHOOSE A DIMENSION</p>

@@ -81,14 +81,6 @@ export const SHELF: ShelfPiece[] = [
     note: 'identity as a process, not a verdict. the questioning is the point.',
   },
   {
-    title: 'The Paradox of Craving to Be Seen',
-    source: 'cupidity · Substack',
-    url: 'https://cupidity.substack.com/p/the-paradox-of-craving-to-be-seen',
-    thumb: new URL('../assets/shelf/craving-to-be-seen.jpg', import.meta.url).href,
-    line: 'wanting to be witnessed, and hiding from the witness.',
-    note: 'the quiet-person dilemma, written down by someone braver.',
-  },
-  {
     title: 'When I Lost Faith in Love',
     source: 'with love, anonymous · Substack',
     url: 'https://withloveanonymousxx.substack.com/p/when-i-lost-faith-in-love',
@@ -113,12 +105,12 @@ export const SHELF: ShelfPiece[] = [
     note: 'intensity is not intimacy. I underline this and forget it, in that order.',
   },
   {
-    title: 'Unrot Your Brain',
-    source: 'plum pits · Substack',
-    url: 'https://plumpits.substack.com/p/unrot-your-brain',
-    thumb: new URL('../assets/shelf/unrot-your-brain.jpg', import.meta.url).href,
-    line: '“No one warns you how easy it is to slip from rest into rot.”',
-    note: 'who are we underneath all the constant consumption and borrowed opinions? your brain is still yours.',
+    title: 'You Are Made of Stardust',
+    source: 'shyam agrawal · Substack',
+    url: 'https://shyamagrawal.substack.com/p/you-are-made-of-stardust',
+    thumb: new URL('../assets/shelf/you-are-made-of-stardust.jpg', import.meta.url).href,
+    line: '“We are atoms rearranged, matter dreaming of itself.”',
+    note: 'exploring the existence of life and earth is the thing that makes me happiest — this is that feeling, written down. the void, condensed and aching.',
   },
   {
     title: 'The Divine Scar',

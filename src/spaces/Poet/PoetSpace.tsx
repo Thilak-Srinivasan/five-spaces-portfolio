@@ -8,6 +8,7 @@ import { NOTEBOOK_NOTE, NOTEBOOK_TITLE } from '../../content/poems'
 import { LINKS } from '../../content/links'
 import { TypeLine } from './TypeLine'
 import { PoetryNotebook } from './PoetryNotebook'
+import kristinThilak from '../../assets/extras/kristin-thilak.jpg'
 
 /** Shelf cover thumbnail; renders nothing until the image file exists. */
 function ShelfThumb({ src, title }: { src?: string; title: string }) {
@@ -60,6 +61,14 @@ export function PoetSpace() {
         {/* interludes — verses typed into whitespace */}
         <div className="mt-32">
           <SectionLabel>interludes</SectionLabel>
+          <div className="mx-auto mt-4 max-w-sm">
+            <img
+              src={kristinThilak}
+              alt="Thilak, in the quiet"
+              loading="lazy"
+              className="w-full rounded-sm border border-[var(--ink-dim)]/25 object-cover opacity-90 grayscale-[0.35] transition-all duration-700 hover:opacity-100 hover:grayscale-0"
+            />
+          </div>
           {INTERLUDES.map((interlude, i) => (
             <section key={i} className="mx-auto my-[35vh] max-w-xl">
               <div className="space-y-3">
