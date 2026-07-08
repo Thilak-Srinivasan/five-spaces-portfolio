@@ -88,10 +88,10 @@ body {
   animation: marquee 28s linear infinite;
 }
 
-/* equalizer teaser bars */
-@keyframes eq {
-  0%, 100% { transform: scaleY(0.25); }
-  50% { transform: scaleY(1); }
+/* drifting sound-wave teaser */
+@keyframes wavedrift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 /* glitch text for the anomaly button */
@@ -109,7 +109,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-marquee, .glitch-text {
-    animation: none;
+  .animate-marquee, .glitch-text, [style*='wavedrift'] {
+    animation: none !important;
   }
 }

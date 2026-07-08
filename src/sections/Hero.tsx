@@ -11,7 +11,7 @@ const ORBIT_LINES = [
   '“we only attract what we subconsciously believe we are worthy of receiving.”',
   'solves Navier–Stokes by day. loses arguments with metaphors by night.',
   '“oh boy, the paradox of choice.”',
-  'fluent in shock waves, petrichor, graphite, and 76,130 minutes of music.',
+  'fluent in shock waves, ink, graphite, and 76,130 minutes of music.',
   '“no feeling is final.” — not even turbulence.',
 ]
 

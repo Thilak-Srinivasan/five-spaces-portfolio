@@ -36,9 +36,9 @@ export const ARTIST_INTRO =
   'a high-end sketchbook — slightly chaotic, fully curated. graphite first, opinions later.'
 
 export const PRACTICE: string[] = [
-  'I draw in pencil because pencil forgives. Every sketch here survived an eraser fight — and the eraser is a collaborator, not a correction.',
-  'Portraits mostly: faces from film stills, anime frames that hit harder than they had any right to, strangers with good bone structure. The subject matters less than the shadow map — I am, at heart, someone who studies how things flow, and light over a cheekbone is just another boundary layer.',
-  'The process is the same as the engineering: reference, rough pass, refinement, and knowing when to stop before you polish the life out of it.',
+  'Paul Klee called a drawing a line going for a walk. Most of these pages are exactly that — a dot that left home at midnight and came back, hours later, as a face.',
+  'Matisse said creativity takes courage; Rothko said silence is so accurate. Everything here was drawn somewhere between those two sentences — brave enough to start, quiet enough to know when to stop.',
+  'And Picasso’s old warning hangs over all of it: every child is an artist; the problem is remaining one once you grow up. This sketchbook is my ongoing argument that you can — that between the derivations and the deadlines, the kid with the pencil is still in here, drawing his heroes.',
 ]
 
 export const TOOLS_LINE = 'graphite, every grade · one loyal eraser · whatever paper is nearest · patience, intermittently'

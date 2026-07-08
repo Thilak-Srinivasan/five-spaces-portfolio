@@ -47,19 +47,44 @@ function Teaser({ t }: { t: PersonaTheme }) {
       />
     )
   }
+  // smooth sound waves drifting across the panel foot
   return (
-    <div className="absolute inset-x-0 bottom-0 flex h-24 items-end justify-center gap-1.5 opacity-0 transition-opacity duration-500 group-hover:opacity-50" aria-hidden>
-      {[...Array(16)].map((_, i) => (
-        <span
-          key={i}
-          className="w-1 origin-bottom"
-          style={{
-            height: `${20 + (i % 5) * 14}px`,
-            background: i % 3 ? t.accent : t.accent2,
-            animation: `eq ${0.7 + (i % 4) * 0.25}s ease-in-out ${i * 0.07}s infinite`,
-          }}
+    <div className="absolute inset-x-0 bottom-8 h-28 overflow-hidden opacity-0 transition-opacity duration-700 group-hover:opacity-60" aria-hidden>
+      <svg
+        className="absolute left-0 top-0 h-full"
+        style={{ width: '200%', animation: 'wavedrift 7s linear infinite' }}
+        viewBox="0 0 1200 100"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M0 50 Q75 22 150 50 T300 50 T450 50 T600 50 T750 50 T900 50 T1050 50 T1200 50"
+          fill="none"
+          stroke={t.accent}
+          strokeWidth="1.5"
+          opacity="0.9"
         />
-      ))}
+        <path
+          d="M0 50 Q75 74 150 50 T300 50 T450 50 T600 50 T750 50 T900 50 T1050 50 T1200 50"
+          fill="none"
+          stroke={t.accent2}
+          strokeWidth="1"
+          opacity="0.55"
+        />
+      </svg>
+      <svg
+        className="absolute left-0 top-2 h-full"
+        style={{ width: '200%', animation: 'wavedrift 11s linear infinite reverse' }}
+        viewBox="0 0 1200 100"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M0 50 Q75 34 150 50 T300 50 T450 50 T600 50 T750 50 T900 50 T1050 50 T1200 50"
+          fill="none"
+          stroke={t.accent}
+          strokeWidth="0.8"
+          opacity="0.4"
+        />
+      </svg>
     </div>
   )
 }
