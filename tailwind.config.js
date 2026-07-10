@@ -7,6 +7,7 @@ export default {
         grotesk: ['"Space Grotesk"', 'sans-serif'],
         serif: ['"Cormorant Garamond"', 'serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
+        hand: ['"Caveat"', 'cursive'],
       },
     },
   },

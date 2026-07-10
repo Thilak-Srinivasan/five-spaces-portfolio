@@ -11,29 +11,38 @@ import jojiThilak from '../../assets/extras/joji-thilak.jpg'
 
 function WrappedStrip() {
   const [failed, setFailed] = useState<Set<number>>(new Set())
+  // strip is doubled so the leftward loop is seamless; hovering the strip
+  // pauses it and the hovered card pops forward
+  const doubled = [...WRAPPED_SHOTS, ...WRAPPED_SHOTS]
   return (
-    <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4">
-      {WRAPPED_SHOTS.map((shot, i) => (
-        <div
-          key={i}
-          className="w-52 shrink-0 snap-center overflow-hidden rounded-lg border border-[var(--ink-dim)]/25 bg-[var(--bg-soft)]"
-          style={{ aspectRatio: '9/16' }}
-        >
-          {failed.has(i) ? (
-            <div className="flex h-full items-center justify-center p-4 text-center">
-              <p className="font-mono text-[10px] leading-relaxed text-[var(--ink-dim)]">{shot.alt}</p>
+    <div className="wrapped-marquee-wrap overflow-hidden py-6">
+      <div className="wrapped-marquee flex w-max gap-4">
+        {doubled.map((shot, i) => {
+          const key = i % WRAPPED_SHOTS.length
+          return (
+            <div
+              key={i}
+              aria-hidden={i >= WRAPPED_SHOTS.length}
+              className="w-52 shrink-0 overflow-hidden rounded-lg border border-[var(--ink-dim)]/25 bg-[var(--bg-soft)] transition-transform duration-300 ease-out hover:z-10 hover:-translate-y-2 hover:scale-110 hover:border-[var(--accent)]/60 hover:shadow-[0_18px_50px_-12px_rgba(200,255,62,0.35)]"
+              style={{ aspectRatio: '9/16' }}
+            >
+              {failed.has(key) ? (
+                <div className="flex h-full items-center justify-center p-4 text-center">
+                  <p className="font-mono text-[10px] leading-relaxed text-[var(--ink-dim)]">{shot.alt}</p>
+                </div>
+              ) : (
+                <img
+                  src={shot.src}
+                  alt={shot.alt}
+                  loading="lazy"
+                  onError={() => setFailed((f) => new Set(f).add(key))}
+                  className="h-full w-full object-cover"
+                />
+              )}
             </div>
-          ) : (
-            <img
-              src={shot.src}
-              alt={shot.alt}
-              loading="lazy"
-              onError={() => setFailed((f) => new Set(f).add(i))}
-              className="h-full w-full object-cover"
-            />
-          )}
-        </div>
-      ))}
+          )
+        })}
+      </div>
     </div>
   )
 }

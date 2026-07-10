@@ -60,6 +60,7 @@ export function PoetryNotebook() {
       <div className="absolute inset-0 translate-x-1.5 translate-y-1.5 border border-[var(--ink-dim)]/20 bg-[var(--bg-soft)]" aria-hidden />
       <div className="absolute inset-0 translate-x-3 translate-y-3 border border-[var(--ink-dim)]/10 bg-[var(--bg-soft)]/60" aria-hidden />
 
+      <span className="tape z-10" aria-hidden />
       <div className="relative overflow-hidden border border-[var(--ink-dim)]/30 bg-[#11141d]">
         {/* faint ruled lines */}
         <div

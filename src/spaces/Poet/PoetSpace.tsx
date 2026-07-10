@@ -10,6 +10,43 @@ import { TypeLine } from './TypeLine'
 import { PoetryNotebook } from './PoetryNotebook'
 import kristinThilak from '../../assets/extras/kristin-thilak.jpg'
 
+// optional collage slots — drop files into src/assets/extras/ and they appear
+const poetRain = new URL('../../assets/extras/poet-rain.jpg', import.meta.url).href
+
+/** Polaroid-framed photo with washi tape and a handwritten caption. */
+function Polaroid({ src, alt, caption, tilt = -1.5 }: { src: string; alt: string; caption: string; tilt?: number }) {
+  const [failed, setFailed] = useState(false)
+  if (failed) return null
+  return (
+    <figure
+      className="relative mx-auto w-fit max-w-sm bg-[#f2efe6] p-3 pb-2 shadow-[0_14px_40px_-12px_rgba(0,0,0,0.55)]"
+      style={{ transform: `rotate(${tilt}deg)` }}
+    >
+      <span className="tape" aria-hidden />
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        onError={() => setFailed(true)}
+        className="block w-full object-cover"
+      />
+      <figcaption className="px-1 pb-1 pt-3 text-center font-hand text-xl leading-snug text-[#3a3630]">
+        {caption}
+      </figcaption>
+    </figure>
+  )
+}
+
+/** A black taped note, like a thought pinned to the page. */
+function TapedNote({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="relative mx-auto max-w-xs rotate-1 bg-[#101318] px-7 py-8 shadow-[0_14px_40px_-12px_rgba(0,0,0,0.6)]">
+      <span className="tape" aria-hidden />
+      <p className="text-center font-hand text-2xl leading-relaxed text-[#e8e4da]">{children}</p>
+    </div>
+  )
+}
+
 /** Shelf cover thumbnail; renders nothing until the image file exists. */
 function ShelfThumb({ src, title }: { src?: string; title: string }) {
   const [failed, setFailed] = useState(false)
@@ -61,12 +98,11 @@ export function PoetSpace() {
         {/* interludes — verses typed into whitespace */}
         <div className="mt-32">
           <SectionLabel>interludes</SectionLabel>
-          <div className="mx-auto mt-4 max-w-sm">
-            <img
+          <div className="mt-8">
+            <Polaroid
               src={kristinThilak}
               alt="Thilak, in the quiet"
-              loading="lazy"
-              className="w-full rounded-sm border border-[var(--ink-dim)]/25 object-cover opacity-90 grayscale-[0.35] transition-all duration-700 hover:opacity-100 hover:grayscale-0"
+              caption="i’m here — somewhere between the lines."
             />
           </div>
           {INTERLUDES.map((interlude, i) => (
@@ -83,8 +119,15 @@ export function PoetSpace() {
           ))}
         </div>
 
+        {/* a thought, taped to the page */}
+        <section className="mt-16">
+          <TapedNote>
+            poetry here isn’t just read — it’s a whisper you can almost feel on your skin. lines that stay long after you’ve looked away.
+          </TapedNote>
+        </section>
+
         {/* the notebook — click the edges, it turns */}
-        <section className="mt-10">
+        <section className="mt-16">
           <SectionLabel>{NOTEBOOK_TITLE}</SectionLabel>
           <p className="mx-auto mb-12 max-w-md text-center font-serif italic leading-relaxed text-[var(--ink-dim)]">
             {NOTEBOOK_NOTE}
@@ -144,6 +187,11 @@ export function PoetSpace() {
               </blockquote>
             ))}
           </div>
+        </section>
+
+        {/* optional pinned photo — appears once poet-rain.jpg exists */}
+        <section className="mt-24">
+          <Polaroid src={poetRain} alt="Rain, kept" caption="the sky, mid-sentence." tilt={1.8} />
         </section>
 
         {/* influences */}

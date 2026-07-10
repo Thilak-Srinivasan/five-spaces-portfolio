@@ -88,6 +88,34 @@ body {
   animation: marquee 28s linear infinite;
 }
 
+/* wrapped archive marquee — pauses when hovered */
+@keyframes wrappedmarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.wrapped-marquee {
+  animation: wrappedmarquee 40s linear infinite;
+}
+.wrapped-marquee-wrap:hover .wrapped-marquee {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wrapped-marquee { animation: none; }
+}
+
+/* washi tape for collage elements */
+.tape {
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  width: 92px;
+  height: 22px;
+  transform: translateX(-50%) rotate(-3deg);
+  background: color-mix(in srgb, var(--accent) 32%, transparent);
+  backdrop-filter: blur(1px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
 /* drifting sound-wave teaser */
 @keyframes wavedrift {
   from { transform: translateX(0); }
