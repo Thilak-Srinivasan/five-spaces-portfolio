@@ -8,44 +8,11 @@ import { NOTEBOOK_NOTE, NOTEBOOK_TITLE } from '../../content/poems'
 import { LINKS } from '../../content/links'
 import { TypeLine } from './TypeLine'
 import { PoetryNotebook } from './PoetryNotebook'
+import { Polaroid, TapedNote } from '../../components/Collage'
 import kristinThilak from '../../assets/extras/kristin-thilak.jpg'
 
 // optional collage slots — drop files into src/assets/extras/ and they appear
 const poetRain = new URL('../../assets/extras/poet-rain.jpg', import.meta.url).href
-
-/** Polaroid-framed photo with washi tape and a handwritten caption. */
-function Polaroid({ src, alt, caption, tilt = -1.5 }: { src: string; alt: string; caption: string; tilt?: number }) {
-  const [failed, setFailed] = useState(false)
-  if (failed) return null
-  return (
-    <figure
-      className="relative mx-auto w-fit max-w-sm bg-[#f2efe6] p-3 pb-2 shadow-[0_14px_40px_-12px_rgba(0,0,0,0.55)]"
-      style={{ transform: `rotate(${tilt}deg)` }}
-    >
-      <span className="tape" aria-hidden />
-      <img
-        src={src}
-        alt={alt}
-        loading="lazy"
-        onError={() => setFailed(true)}
-        className="block w-full object-cover"
-      />
-      <figcaption className="px-1 pb-1 pt-3 text-center font-hand text-xl leading-snug text-[#3a3630]">
-        {caption}
-      </figcaption>
-    </figure>
-  )
-}
-
-/** A black taped note, like a thought pinned to the page. */
-function TapedNote({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="relative mx-auto max-w-xs rotate-1 bg-[#101318] px-7 py-8 shadow-[0_14px_40px_-12px_rgba(0,0,0,0.6)]">
-      <span className="tape" aria-hidden />
-      <p className="text-center font-hand text-2xl leading-relaxed text-[#e8e4da]">{children}</p>
-    </div>
-  )
-}
 
 /** Shelf cover thumbnail; renders nothing until the image file exists. */
 function ShelfThumb({ src, title }: { src?: string; title: string }) {
@@ -80,6 +47,7 @@ export function PoetSpace() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-2xl px-6 pb-32 pt-48">
+        <p className="text-center font-mono text-[11px] tracking-[0.4em] text-[var(--accent)]">DIMENSION 02 · THE QUIET FLOOR</p>
         {/* opening — vast emptiness first */}
         <section className="flex min-h-[55vh] items-center justify-center">
           <TypeLine text={OPENING} className="text-center font-serif text-3xl italic text-[var(--ink)] md:text-4xl" />

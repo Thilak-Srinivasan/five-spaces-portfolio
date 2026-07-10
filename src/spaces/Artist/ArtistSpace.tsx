@@ -5,6 +5,7 @@ import { ExternalIcon } from '../../components/Icons'
 import { ARTIST_INTRO, PRACTICE, SKETCHES, TOOLS_LINE } from '../../content/artist'
 import { LINKS } from '../../content/links'
 import { SketchTile } from './SketchTile'
+import { MarginNote } from '../../components/Collage'
 import theEye from '../../assets/extras/the-eye.jpg'
 
 export function ArtistSpace() {
@@ -16,7 +17,7 @@ export function ArtistSpace() {
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 pb-24 pt-32">
         <section className="mb-16 max-w-lg">
-          <p className="font-mono text-[11px] tracking-[0.35em] text-[var(--accent2)]">FIELD NOTES · GRAPHITE</p>
+          <p className="font-mono text-[11px] tracking-[0.35em] text-[var(--accent2)]">DIMENSION 03 · FIELD NOTES, GRAPHITE</p>
           <h1 className="mt-4 font-grotesk text-5xl font-bold text-[var(--ink)] md:text-6xl">THE EYE</h1>
           <p className="mt-5 font-serif text-lg italic leading-relaxed text-[var(--ink-dim)]">{ARTIST_INTRO}</p>
           <p className="mt-3 font-mono text-[10px] tracking-widest text-[var(--ink-dim)]/60">
@@ -54,9 +55,30 @@ export function ArtistSpace() {
           </div>
         </section>
 
+        {/* graphite swatches — the palette */}
+        <section className="mb-16">
+          <p className="mb-4 font-mono text-[10px] tracking-[0.35em] text-[var(--ink-dim)]">THE PALETTE — ALL SIX OF IT</p>
+          <div className="flex max-w-md overflow-hidden rounded-sm border border-[var(--ink-dim)]/30">
+            {[
+              ['2H', '#b9b5ac'],
+              ['HB', '#96928a'],
+              ['2B', '#726e67'],
+              ['4B', '#514e49'],
+              ['6B', '#33312e'],
+              ['8B', '#191817'],
+            ].map(([grade, hex]) => (
+              <div key={grade} className="group/swatch flex-1 py-5 text-center transition-transform hover:-translate-y-1" style={{ background: hex }}>
+                <span className={"font-mono text-[10px] font-bold tracking-widest " + (grade === '2H' || grade === 'HB' ? 'text-[#26241f]' : 'text-[#d8d4cb]')}>{grade}</span>
+              </div>
+            ))}
+          </div>
+          <MarginNote className="mt-3">who needs color when you have six kinds of dark?</MarginNote>
+        </section>
+
         {/* masonry */}
         <section>
           <p className="mb-6 font-mono text-[10px] tracking-[0.35em] text-[var(--ink-dim)]">THE PAGES</p>
+          <MarginNote className="-mt-2 mb-6">always the eyes first. if the eyes are wrong, nothing else matters.</MarginNote>
           <div className="columns-1 gap-5 sm:columns-2 lg:columns-3">
             {SKETCHES.map((s) => (
               <SketchTile key={s.caption} sketch={s} />

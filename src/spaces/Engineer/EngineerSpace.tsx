@@ -56,7 +56,7 @@ export function EngineerSpace() {
       <div className="relative z-10 mx-auto max-w-5xl px-6 pb-24 pt-32">
         {/* hero */}
         <section className="min-h-[55vh]">
-          <p className="font-mono text-[11px] tracking-[0.35em] text-[var(--accent)]">SECTOR 01 · Δ −0.042</p>
+          <p className="font-mono text-[11px] tracking-[0.35em] text-[var(--accent)]">DIMENSION 01 · TELEMETRY Δ −0.042</p>
           <h1 data-obstacle className="mt-4 inline-block font-grotesk font-bold leading-[0.95] text-[var(--ink)]" style={{ fontSize: 'clamp(3rem, 8vw, 6.5rem)' }}>
             PERFORMANCE,
             <br />

@@ -103,6 +103,19 @@ body {
   .wrapped-marquee { animation: none; }
 }
 
+/* film reels — counter-drifting rows, pause on hover */
+.film-row {
+  animation-name: wavedrift;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.film-row-wrap:hover .film-row {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .film-row { animation: none; }
+}
+
 /* washi tape for collage elements */
 .tape {
   position: absolute;

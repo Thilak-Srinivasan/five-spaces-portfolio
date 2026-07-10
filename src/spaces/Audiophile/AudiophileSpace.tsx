@@ -5,6 +5,7 @@ import { QuoteDivider } from '../../components/QuoteDivider'
 import { ExternalIcon, SpotifyIcon } from '../../components/Icons'
 import { FIRST_DAY, LISTENING_DAY, PERSONALITY, WRAPPED_SHOTS } from '../../content/audiophile'
 import { LINKS } from '../../content/links'
+import { TapedNote } from '../../components/Collage'
 import { WrappedTimeline } from './WrappedTimeline'
 import { ArtistConstellation } from './ArtistConstellation'
 import jojiThilak from '../../assets/extras/joji-thilak.jpg'
@@ -80,7 +81,7 @@ export function AudiophileSpace() {
       <div className="relative z-10 mx-auto max-w-4xl px-6 pb-24 pt-36">
         {/* hero */}
         <section className="text-center">
-          <p className="font-mono text-[11px] tracking-[0.4em] text-[var(--accent2)]">VOLUME: PERSONALITY</p>
+          <p className="font-mono text-[11px] tracking-[0.4em] text-[var(--accent2)]">DIMENSION 04 · VOLUME: PERSONALITY</p>
           <h1 className="mt-4 font-grotesk font-bold leading-none text-[var(--ink)]" style={{ fontSize: 'clamp(3.2rem, 10vw, 7rem)' }}>
             DRUNK ON
             <br />
@@ -93,12 +94,18 @@ export function AudiophileSpace() {
 
         {/* the listener, in person */}
         <section className="mt-12 flex justify-center">
-          <img
-            src={jojiThilak}
-            alt="Thilak at a Joji show"
-            loading="lazy"
-            className="max-h-[420px] w-auto max-w-full rotate-[-1.5deg] rounded-md border border-[var(--ink-dim)]/30 object-contain shadow-[0_20px_60px_-20px_rgba(200,255,62,0.25)]"
-          />
+          <figure className="relative rotate-[-1.5deg]">
+            <span className="tape z-10" aria-hidden />
+            <img
+              src={jojiThilak}
+              alt="Thilak at a Joji show"
+              loading="lazy"
+              className="max-h-[420px] w-auto max-w-full rounded-md border border-[var(--ink-dim)]/30 object-contain shadow-[0_20px_60px_-20px_rgba(200,255,62,0.25)]"
+            />
+            <figcaption className="mt-3 text-center font-hand text-xl text-[var(--ink-dim)]">
+              the night the algorithm finally got it right.
+            </figcaption>
+          </figure>
         </section>
 
         {/* wrapped timeline */}
@@ -107,6 +114,11 @@ export function AudiophileSpace() {
             THE WRAPPED YEARS
           </p>
           <WrappedTimeline />
+          <div className="mt-16">
+            <TapedNote tilt={-1.2}>
+              small talk optional — press shuffle on my library instead. everything you’d ask is already in there.
+            </TapedNote>
+          </div>
         </section>
 
         <QuoteDivider index={7} />

@@ -7,12 +7,13 @@ import introImg from '../assets/extras/intro-page.jpg'
 
 gsap.registerPlugin(SplitText)
 
+// lines carried over from the commonplace wall
 const ORBIT_LINES = [
-  '“we only attract what we subconsciously believe we are worthy of receiving.”',
-  'solves Navier–Stokes by day. loses arguments with metaphors by night.',
-  '“oh boy, the paradox of choice.”',
-  'fluent in shock waves, ink, graphite, and 76,130 minutes of music.',
-  '“no feeling is final.” — not even turbulence.',
+  '“what we want is a little more reality and a little less rhetoric.”',
+  '“who are we underneath all the constant consumption and borrowed opinions?”',
+  '“you have not met yourself until you have sat alone in silence, without a script written by another.”',
+  '“either increase your sacrifice, or limit your desires.”',
+  '“everything that kills me makes me feel alive.”',
 ]
 
 /** One quiet line at a time, cross-fading beneath the name. */
@@ -83,7 +84,7 @@ export function Hero() {
           THILAK S
         </h1>
         <p ref={subRef} className="mt-6 font-serif text-lg italic text-[var(--ink-dim)] md:text-xl">
-          Computational researcher. Poet. Artist. Music aficionado.
+          Computational researcher. Poet. Artist. Music aficionado. Geek.
         </p>
         <OrbitingLine />
         <img

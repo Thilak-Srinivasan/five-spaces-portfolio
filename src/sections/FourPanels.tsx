@@ -47,6 +47,25 @@ function Teaser({ t }: { t: PersonaTheme }) {
       />
     )
   }
+  if (t.id === 'geek') {
+    // drifting film-strip sprockets
+    return (
+      <div className="absolute inset-x-0 bottom-8 h-24 overflow-hidden opacity-0 transition-opacity duration-700 group-hover:opacity-50" aria-hidden>
+        {[0, 1].map((row) => (
+          <div
+            key={row}
+            className="absolute left-0 h-3 w-[200%]"
+            style={{
+              top: row ? '70%' : '15%',
+              backgroundImage: `repeating-linear-gradient(90deg, ${t.accent}55 0 9px, transparent 9px 24px)`,
+              animation: `wavedrift ${row ? 9 : 6}s linear infinite${row ? ' reverse' : ''}`,
+            }}
+          />
+        ))}
+        <div className="absolute inset-x-0 top-[34%] h-[28%] border-y" style={{ borderColor: `${t.accent}33` }} />
+      </div>
+    )
+  }
   // smooth sound waves drifting across the panel foot
   return (
     <div className="absolute inset-x-0 bottom-8 h-28 overflow-hidden opacity-0 transition-opacity duration-700 group-hover:opacity-60" aria-hidden>

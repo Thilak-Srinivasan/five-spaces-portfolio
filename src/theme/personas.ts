@@ -1,4 +1,4 @@
-export type PersonaId = 'engineer' | 'poet' | 'artist' | 'audiophile'
+export type PersonaId = 'engineer' | 'poet' | 'artist' | 'audiophile' | 'geek'
 
 export type CursorVariant = 'crosshair-telemetry' | 'ink-dot' | 'graphite' | 'pulse-ring'
 
@@ -79,9 +79,24 @@ export const PERSONAS: Record<PersonaId, PersonaTheme> = {
     bodyFont: 'var(--font-grotesk)',
     cursor: 'pulse-ring',
   },
+  geek: {
+    id: 'geek',
+    index: '05',
+    title: 'The Geek',
+    tagline: 'rabbit holes, willingly.',
+    bg: '#0b0810',
+    bgSoft: '#130e1b',
+    accent: '#b388ff',
+    accent2: '#ff3d5a',
+    ink: '#efeaf8',
+    inkDim: '#6f6580',
+    headingFont: 'var(--font-grotesk)',
+    bodyFont: 'var(--font-grotesk)',
+    cursor: 'pulse-ring',
+  },
 }
 
-export const PERSONA_ORDER: PersonaId[] = ['engineer', 'poet', 'artist', 'audiophile']
+export const PERSONA_ORDER: PersonaId[] = ['engineer', 'poet', 'artist', 'audiophile', 'geek']
 
 export const LANDING_DEFAULTS = {
   bg: '#07080c',
