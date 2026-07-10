@@ -10,7 +10,7 @@ export function CommandOverlay() {
   const { enter, exit } = usePersona()
 
   const items: Array<{ id: PersonaId | 'home'; label: string; hint: string }> = [
-    { id: 'home', label: 'Home', hint: 'the four spaces' },
+    { id: 'home', label: 'Home', hint: 'all five dimensions' },
     ...PERSONA_ORDER.map((id) => ({ id, label: PERSONAS[id].title, hint: PERSONAS[id].tagline })),
   ]
 

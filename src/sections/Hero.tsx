@@ -74,7 +74,7 @@ export function Hero() {
       {reduced && <div className="canvas-fallback absolute inset-0" aria-hidden />}
       <div className="relative z-10 px-6 text-center">
         <p className="mb-4 font-mono text-[11px] tracking-[0.4em] text-[var(--ink-dim)]">
-          FOUR DIMENSIONS · ONE OBSERVER
+          FIVE DIMENSIONS · ONE OBSERVER
         </p>
         <h1
           ref={nameRef}

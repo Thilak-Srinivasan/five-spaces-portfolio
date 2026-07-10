@@ -1,6 +1,6 @@
-# The Four Spaces — Thilak S
+# The Five Dimensions — Thilak S
 
-Experiential portfolio: **The Engineer · The Poet · The Artist · The Audiophile**.
+Experiential portfolio: **The Engineer · The Poet · The Artist · The Music Aficionado · The Geek**.
 Vite + React + Tailwind, GSAP (ScrollTrigger/SplitText), Lenis smooth scroll, Three.js starfield, hand-rolled canvas effects (wind tunnel, rain drift, graphite trail, waveform).
 
 ## Run
@@ -11,7 +11,7 @@ npm run dev      # http://localhost:5173
 npm run build    # production build in dist/
 ```
 
-Deep links: `#/engineer` `#/poet` `#/artist` `#/audiophile`. Press **⌘K / Ctrl+K** for fast travel.
+Deep links: `#/engineer` `#/poet` `#/artist` `#/audiophile` `#/geek`. Press **⌘K / Ctrl+K** for fast travel.
 
 ## Dropping in real assets
 
