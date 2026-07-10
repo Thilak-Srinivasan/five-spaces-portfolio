@@ -1,3 +1,4 @@
+import { CharcoalDust } from '../../canvas/CharcoalDust'
 import { GraphiteTrail } from '../../canvas/GraphiteTrail'
 import { useCanvasEffect } from '../../canvas/useCanvasEffect'
 import { QuoteDivider } from '../../components/QuoteDivider'
@@ -10,9 +11,13 @@ import theEye from '../../assets/extras/the-eye.jpg'
 
 export function ArtistSpace() {
   const { ref, reduced } = useCanvasEffect(() => new GraphiteTrail(), { trackPointer: true })
+  const dust = useCanvasEffect(() => new CharcoalDust())
 
   return (
     <div className="paper-grain relative min-h-screen">
+      <div className="fixed inset-0" aria-hidden>
+        {dust.reduced ? <div className="canvas-fallback h-full w-full" /> : <canvas ref={dust.ref} className="h-full w-full" />}
+      </div>
       {!reduced && <canvas ref={ref} className="pointer-events-none fixed inset-0 z-20 h-full w-full" aria-hidden />}
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 pb-24 pt-32">

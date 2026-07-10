@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { ProjectorDust } from '../../canvas/ProjectorDust'
+import { useCanvasEffect } from '../../canvas/useCanvasEffect'
 import { TicketStub, MarginNote } from '../../components/Collage'
 import { CINEMA, CINEMA_NOTE, COMING_SOON, GEEK_INTRO } from '../../content/geek'
 import type { CinemaEntry } from '../../content/geek'
@@ -139,14 +141,29 @@ function Projector() {
 }
 
 export function GeekSpace() {
+  const { ref, reduced } = useCanvasEffect(() => new ProjectorDust())
+
   return (
     <div className="relative">
-      {/* faint projector-light backdrop */}
+      {/* projector beam + dust */}
+      <div className="fixed inset-0" aria-hidden>
+        {reduced ? (
+          <div
+            className="canvas-fallback h-full w-full"
+            style={{
+              background:
+                'radial-gradient(ellipse 70% 45% at 50% 0%, color-mix(in srgb, var(--accent) 8%, transparent), transparent)',
+            }}
+          />
+        ) : (
+          <canvas ref={ref} className="h-full w-full" />
+        )}
+      </div>
       <div
-        className="paper-grain fixed inset-0"
+        className="paper-grain pointer-events-none fixed inset-0"
         style={{
           background:
-            'radial-gradient(ellipse 70% 45% at 50% 0%, color-mix(in srgb, var(--accent) 8%, transparent), transparent), radial-gradient(ellipse 55% 40% at 85% 90%, color-mix(in srgb, var(--accent2) 5%, transparent), transparent)',
+            'radial-gradient(ellipse 55% 40% at 85% 90%, color-mix(in srgb, var(--accent2) 5%, transparent), transparent)',
         }}
         aria-hidden
       />
