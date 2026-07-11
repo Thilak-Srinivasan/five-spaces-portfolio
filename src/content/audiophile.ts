@@ -58,6 +58,32 @@ export const FIRST_DAY = {
   note: '20,993 songs by the end of that first year.',
 }
 
+/** The silent player — Joji on repeat, audio not included. */
+export interface SilentTrack {
+  title: string
+  artist: string
+  duration: number // seconds
+  scene: string // backdrop image — drop into src/assets/extras/
+}
+
+// each scene hand-matched to its song's vibe:
+// 1 mountain leap → Let It Happen (surrender, vastness)
+// 2 window light, waiting → Andromeda (cosmic longing)
+// 3 train platform, red → Die For You (locked by request — it fits)
+// 4 two lit windows apart → K. (love across a distance)
+// 5 clock in low light → prayer1 (late-night, time passing)
+// 6 turntable + headphones → Headache (drown it in music)
+export const SILENT_TRACKS: SilentTrack[] = [
+  { title: 'Let It Happen', artist: 'Tame Impala', duration: 467, scene: new URL('../assets/extras/transcend-1.jpg', import.meta.url).href },
+  { title: 'Andromeda', artist: 'Weyes Blood', duration: 279, scene: new URL('../assets/extras/transcend-2.jpg', import.meta.url).href },
+  { title: 'Die For You', artist: 'Joji', duration: 210, scene: new URL('../assets/extras/transcend-3.jpg', import.meta.url).href },
+  { title: 'K.', artist: 'Cigarettes After Sex', duration: 307, scene: new URL('../assets/extras/transcend-4.jpg', import.meta.url).href },
+  { title: 'prayer1', artist: 'april27', duration: 156, scene: new URL('../assets/extras/transcend-5.jpg', import.meta.url).href },
+  { title: 'Headache', artist: 'Asal', duration: 168, scene: new URL('../assets/extras/transcend-6.jpg', import.meta.url).href },
+]
+
+export const SILENT_PLAYER_NOTE = 'transcending time and space — audio not included.'
+
 export interface WrappedShot {
   src?: string
   alt: string

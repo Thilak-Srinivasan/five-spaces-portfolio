@@ -52,12 +52,103 @@ export const CINEMA: CinemaEntry[] = [
 ]
 
 export const GEEK_INTRO =
-  'psychology, time travel, quantum physics, multiverses, paradoxes, the occasional conspiracy — and the stories that made all of it personal. this dimension archives the obsessions.'
+  'psychology, time travel, quantum physics, multiverses, paradoxes, the occasional conspiracy theory, formula 1 at 350 km/h, and a cinema habit that refuses genre — this dimension archives the obsessions, current and incoming.'
 
 export const CINEMA_NOTE = 'no genres, no rankings, no order but the mood. click a frame — the projector does the rest.'
 
-export const COMING_SOON = [
-  'paradoxes & thought experiments',
-  'the psychology shelf',
-  'multiverse theory, argued badly at 2 a.m.',
+/** Rabbit hole 2 — the corkboard: theories & paradoxes, pinned and strung. */
+export interface Theory {
+  title: string
+  tag: string // one-word classification stamp
+  line: string
+  url: string // rabbit-hole entry point
+}
+
+export const THEORIES: Theory[] = [
+  { title: 'The Simulation Theory', url: 'https://en.wikipedia.org/wiki/Simulation_hypothesis', tag: 'UNFALSIFIABLE', line: 'if we’re rendered, someone is ignoring the bug reports.' },
+  { title: 'Many Worlds', url: 'https://en.wikipedia.org/wiki/Many-worlds_interpretation', tag: 'BRANCHING', line: 'somewhere, a version of me submitted everything early. we don’t talk about him.' },
+  { title: 'The Fermi Paradox', url: 'https://en.wikipedia.org/wiki/Fermi_paradox', tag: 'UNANSWERED', line: 'the universe’s loudest silence — everyone’s invited, nobody’s home.' },
+  { title: 'White Holes', url: 'https://en.wikipedia.org/wiki/White_hole', tag: 'THEORETICAL', line: 'black holes played in reverse. the universe’s undo button, allegedly.' },
+  { title: 'The Ekpyrotic Universe', url: 'https://en.wikipedia.org/wiki/Ekpyrotic_universe', tag: 'PRE-BANG', line: 'creation as a fender-bender between two higher-dimensional membranes.' },
+  { title: 'The Holographic Universe', url: 'https://en.wikipedia.org/wiki/Holographic_principle', tag: 'PROJECTED', line: 'all of this might be a 2D surface with exceptional marketing.' },
+  { title: 'Black-Hole Nurseries', url: 'https://en.wikipedia.org/wiki/Cosmological_natural_selection', tag: 'RECURSIVE', line: 'every black hole a delivery room for a new universe. we might be someone’s singularity.' },
+  { title: 'Quantum Entanglement', url: 'https://en.wikipedia.org/wiki/Quantum_entanglement', tag: 'SPOOKY', line: 'two particles, one mood. distance not included.' },
+  { title: 'Time Crystals', url: 'https://en.wikipedia.org/wiki/Time_crystal', tag: 'PERPETUAL', line: 'matter that ticks forever without energy — perpetual motion’s legal loophole.' },
+  { title: 'Panspermia', url: 'https://en.wikipedia.org/wiki/Panspermia', tag: 'HITCHHIKED', line: 'life didn’t start here; it caught a ride. we are all immigrants of the cosmos.' },
+  { title: 'The Boltzmann Brain', url: 'https://en.wikipedia.org/wiki/Boltzmann_brain', tag: 'UNSETTLING', line: 'you — memories included — may have condensed out of the void five minutes ago.' },
+  { title: 'Retroactive Precognition', url: 'https://en.wikipedia.org/wiki/Feeling_the_Future', tag: 'DÉJÀ VU', line: 'remembering the future, technically. déjà vu with a physics degree.' },
+  { title: 'The Heat Death', url: 'https://en.wikipedia.org/wiki/Heat_death_of_the_universe', tag: 'EVENTUAL', line: 'the universe’s final state: perfectly tidy, perfectly cold, nobody left to complain.' },
+  { title: 'Quantum Immortality', url: 'https://en.wikipedia.org/wiki/Quantum_suicide_and_immortality', tag: 'BRANCHING', line: 'in some branch, you always survive. the multiverse’s strangest gift.' },
 ]
+
+export const CORKBOARD_NOTE = 'pinned, strung, and argued with at 2 a.m. none of these are proven. that’s the point.'
+
+/** Rabbit hole 3 — field notes on being a person. */
+export const FIELD_NOTES: string[] = [
+  'the most magnetic people are never bored. they are busy becoming.',
+  'we all have multitudes — with a firm base, good sense, and imagination, a person can change with the slightest of events.',
+  'a human lives three lives: the first ends with the loss of naïveté, the second with the loss of innocence, the third with life itself. the trick is enjoying all three syllabi.',
+  'to know the true meaning of life, you must first live a life full of meaning.',
+  'the ways of the heart cannot be explained. it wants what it wants — peer review pending.',
+  'what do you need? — someone who stays when the humor stops.',
+  'the mind, when burdened beyond measure, often seeks refuge in absence rather than endure further folly. (rest is a valid control strategy.)',
+  '“beer and juleps cannot fill the void left by love. only wine can — but it is famously costly, which is why sadness is among the most recurrent issues facing the poor.” — filed under: economics of the heart.',
+]
+
+export const FIELD_NOTES_INTRO =
+  'the psychology shelf — observations collected on being a person, annotated by someone who studies flows for a living.'
+
+/** Rabbit hole 4 — papers that will never survive peer review. */
+export interface FakePaper {
+  id: string
+  title: string
+  abstract: string
+  fig?: string // drop an image into src/assets/papers/ and it appears as Fig. 1
+}
+
+export const PAPERS: FakePaper[] = [
+  {
+    id: 'arXiv:never.0001',
+    fig: new URL('../assets/papers/never-0001.jpg', import.meta.url).href,
+    title: 'Ergodic Lagrangian Dynamics in a Superhero Universe',
+    abstract: 'we derive the equations of motion for a web-slinger under Manhattan boundary conditions. energy is not conserved; drama is.',
+  },
+  {
+    id: 'arXiv:never.0002',
+    fig: new URL('../assets/papers/never-0002.jpg', import.meta.url).href,
+    title: 'Black-Box Optimization of a Life, N = 1',
+    abstract: 'unknown objective function, noisy feedback, no gradient access. we keep sampling anyway. convergence not guaranteed; character development observed.',
+  },
+  {
+    id: 'arXiv:never.0003',
+    fig: new URL('../assets/papers/never-0003.jpg', import.meta.url).href,
+    title: 'A Pareto Analysis of Overthinking',
+    abstract: '80% of the damage comes from 20% of the thoughts, usually after 1 a.m. we propose an early-stopping criterion. we do not follow it.',
+  },
+  {
+    id: 'arXiv:never.0004',
+    fig: new URL('../assets/papers/never-0004.jpg', import.meta.url).href,
+    title: 'Chaos Theory and the Butterfly That Rerouted My Week',
+    abstract: 'sensitive dependence on initial conditions, demonstrated via one unread message. lyapunov exponents of a tuesday.',
+  },
+  {
+    id: 'arXiv:never.0005',
+    fig: new URL('../assets/papers/never-0005.jpg', import.meta.url).href,
+    title: 'On the Aeroacoustics of a Conscious Cosmos',
+    abstract: 'if the universe is a mind, what does it hear? we present the first (and last) study of cosmic tinnitus, with implications for string theory — the vibrating kind.',
+  },
+]
+
+export const PAPERS_INTRO = 'submitted to the journal of ideas i think about in the shower. rejection pending.'
+
+export const PADDOCK = {
+  label: 'THE PADDOCK · HOME RACE OF ALL THE OBSESSIONS',
+  headline: 'Formula 1',
+  body: 'the rabbit hole that became a career plan. every other obsession meets here: engineering at 350 km/h, poetry in the team radio, art on the liveries, sound you feel in your ribs, and lore deeper than any anime. one day the pit wall; for now, the telemetry overlays.',
+  image: new URL('../assets/extras/paddock.jpg', import.meta.url).href, // drop paddock.jpg into src/assets/extras/
+  links: [
+    { label: 'DRIVERS & TEAMS', url: 'https://www.formula1.com/en/drivers' },
+    { label: 'THE 2026 CALENDAR', url: 'https://www.formula1.com/en/racing/2026' },
+    { label: 'EVERYTHING F1', url: 'https://www.formula1.com/' },
+  ],
+}

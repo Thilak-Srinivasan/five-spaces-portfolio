@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Waveform } from '../../canvas/Waveform'
 import { useCanvasEffect } from '../../canvas/useCanvasEffect'
 import { QuoteDivider } from '../../components/QuoteDivider'
 import { ExternalIcon, SpotifyIcon } from '../../components/Icons'
-import { FIRST_DAY, LISTENING_DAY, PERSONALITY, WRAPPED_SHOTS } from '../../content/audiophile'
+import { FIRST_DAY, LISTENING_DAY, PERSONALITY, SILENT_PLAYER_NOTE, SILENT_TRACKS, WRAPPED_SHOTS } from '../../content/audiophile'
 import { LINKS } from '../../content/links'
 import { TapedNote } from '../../components/Collage'
 import { WrappedTimeline } from './WrappedTimeline'
@@ -66,6 +66,103 @@ function FirstDayChip() {
         </span>
       )}
     </button>
+  )
+}
+
+function fmt(sec: number) {
+  const m = Math.floor(sec / 60)
+  const ss = Math.floor(sec % 60)
+  return `${m}:${String(ss).padStart(2, '0')}`
+}
+
+/** A Spotify-style player that "plays" in silence — the scene breathes, the bar moves. */
+function SilentPlayer() {
+  const [idx, setIdx] = useState(0)
+  const [playing, setPlaying] = useState(true)
+  const [elapsed, setElapsed] = useState(74) // start mid-song, like a memory
+  const [sceneFailed, setSceneFailed] = useState<Set<number>>(new Set())
+  const track = SILENT_TRACKS[idx]
+
+  useEffect(() => {
+    if (!playing) return
+    const id = setInterval(() => {
+      setElapsed((e) => {
+        if (e + 1 >= track.duration) {
+          setIdx((i) => (i + 1) % SILENT_TRACKS.length)
+          return 0
+        }
+        return e + 1
+      })
+    }, 1000)
+    return () => clearInterval(id)
+  }, [playing, track.duration])
+
+  const go = (dir: 1 | -1) => {
+    setIdx((i) => (i + dir + SILENT_TRACKS.length) % SILENT_TRACKS.length)
+    setElapsed(0)
+  }
+
+  const progress = Math.min(elapsed / track.duration, 1) * 100
+
+  return (
+    <div className="mx-auto max-w-sm">
+      <div className="relative overflow-hidden rounded-2xl border border-[var(--ink-dim)]/30 shadow-[0_24px_70px_-24px_rgba(200,255,62,0.25)]" style={{ aspectRatio: '4/5' }}>
+        {/* the scene */}
+        {sceneFailed.has(idx) ? (
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 80% 70% at 50% 20%, color-mix(in srgb, var(--accent) 14%, transparent), var(--bg-soft))' }} />
+        ) : (
+          <img
+            src={track.scene}
+            alt="A quiet scene the song is scoring"
+            onError={() => setSceneFailed((f) => new Set(f).add(idx))}
+            className={`kenburns absolute inset-0 h-full w-full object-cover ${playing ? '' : 'kenburns-paused'}`}
+          />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/25" aria-hidden />
+
+        {/* the player */}
+        <div className="absolute inset-x-0 bottom-0 p-5">
+          <p className="truncate font-grotesk text-xl font-bold text-white">{track.title}</p>
+          <p className="mt-0.5 font-mono text-[11px] tracking-wider text-white/60">{track.artist}</p>
+          <div className="mt-4 h-1 w-full overflow-hidden rounded-full bg-white/25">
+            <div className="h-full rounded-full bg-white transition-[width] duration-1000 ease-linear" style={{ width: `${progress}%` }} />
+          </div>
+          <div className="mt-1 flex justify-between font-mono text-[10px] text-white/50">
+            <span>{fmt(elapsed)}</span>
+            <span>-{fmt(track.duration - elapsed)}</span>
+          </div>
+          <div className="mt-3 flex items-center justify-center gap-7">
+            {/* shuffle */}
+            <svg viewBox="0 0 24 24" className="h-4 w-4 text-[var(--accent)]" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+              <path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <button onClick={() => go(-1)} data-magnetic aria-label="Previous track" className="text-white/85 transition-transform hover:scale-110">
+              <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden><path d="M6 5h2v14H6zM20 5v14l-11-7z" /></svg>
+            </button>
+            <button
+              onClick={() => setPlaying((p) => !p)}
+              data-magnetic
+              aria-label={playing ? 'Pause' : 'Play'}
+              className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-black transition-transform hover:scale-105"
+            >
+              {playing ? (
+                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden><path d="M7 5h4v14H7zM13 5h4v14h-4z" /></svg>
+              ) : (
+                <svg viewBox="0 0 24 24" className="ml-0.5 h-5 w-5" fill="currentColor" aria-hidden><path d="M7 4v16l13-8z" /></svg>
+              )}
+            </button>
+            <button onClick={() => go(1)} data-magnetic aria-label="Next track" className="text-white/85 transition-transform hover:scale-110">
+              <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden><path d="M16 5h2v14h-2zM4 5v14l11-7z" /></svg>
+            </button>
+            {/* timer/repeat glyph for symmetry */}
+            <svg viewBox="0 0 24 24" className="h-4 w-4 text-white/50" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+              <path d="M17 2v4M7 22v-4M21 11a8 8 0 0 0-14-5M3 13a8 8 0 0 0 14 5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <p className="mt-4 text-center font-hand text-xl text-[var(--ink-dim)]">{SILENT_PLAYER_NOTE}</p>
+    </div>
   )
 }
 
@@ -152,6 +249,14 @@ export function AudiophileSpace() {
             THE CONSTELLATION · TOP ARTISTS
           </p>
           <ArtistConstellation />
+        </section>
+
+        {/* the silent player */}
+        <section className="mt-24">
+          <p className="mb-8 text-center font-mono text-[10px] tracking-[0.35em] text-[var(--ink-dim)]">
+            NOW PLAYING
+          </p>
+          <SilentPlayer />
         </section>
 
         <QuoteDivider index={9} />
