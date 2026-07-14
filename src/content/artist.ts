@@ -26,6 +26,12 @@ export const SKETCHES: Sketch[] = [
     caption: 'jimin · graphite on paper',
     story: 'park ji-min, sunglasses indoors — a study in effortless. the sparkles are canon.',
   },
+  {
+    src: new URL('../assets/sketches/girl.jpg', import.meta.url).href,
+    alt: 'Pencil portrait of a girl, half her face hidden, one wide eye looking through wind-blown hair',
+    caption: 'the gaze · graphite on paper',
+    story: 'half in shadow, hair mid-storm — drawn for the one eye that watches you back.',
+  },
   { placeholder: true, alt: 'placeholder frame', caption: 'next page intentionally left blank' },
   { placeholder: true, alt: 'placeholder frame', caption: 'in progress — the eye is patient' },
   { placeholder: true, alt: 'placeholder frame', caption: 'reference found, courage pending' },

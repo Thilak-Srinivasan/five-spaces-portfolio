@@ -103,6 +103,72 @@ body {
   .wrapped-marquee { animation: none; }
 }
 
+/* scroll companions — little doodles that travel with the scroll */
+.companion {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
+}
+.companion-face {
+  transition: transform 0.25s ease;
+}
+@keyframes companionbob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-3px) rotate(-1.5deg); }
+}
+@keyframes companionsway {
+  0%, 100% { transform: translateY(0) rotate(-2.5deg); }
+  50% { transform: translateY(-4px) rotate(2.5deg); }
+}
+@keyframes companionbounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+@keyframes companionhover {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.companion-bob { animation: companionbob 2.4s ease-in-out infinite; }
+.companion-sway { animation: companionsway 3.2s ease-in-out infinite; }
+.companion-bounce { animation: companionbounce 1.1s ease-in-out infinite; }
+.companion-hover { animation: companionhover 2.8s ease-in-out infinite; }
+
+@keyframes companionwheel {
+  to { transform: rotate(360deg); }
+}
+.companion-wheel { animation: companionwheel 2.6s linear infinite paused; }
+.companion-moving .companion-wheel { animation-play-state: running; }
+
+.companion-speed { opacity: 0; transition: opacity 0.3s; }
+.companion-moving .companion-speed { opacity: 1; }
+
+@keyframes companionleg {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(14deg); }
+}
+.companion-leg-l { transform-origin: 28px 38px; animation: companionleg 0.5s ease-in-out infinite paused; }
+.companion-leg-r { transform-origin: 48px 38px; animation: companionleg 0.5s ease-in-out infinite reverse paused; }
+.companion-moving .companion-leg-l, .companion-moving .companion-leg-r { animation-play-state: running; }
+
+@keyframes companionnote {
+  0% { opacity: 0; transform: translateY(4px); }
+  40% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-6px); }
+}
+.companion-note { animation: companionnote 1.6s ease-out infinite; }
+
+@keyframes companionlight {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+.companion-light { animation: companionlight 1.2s ease-in-out infinite; }
+
+@media (max-width: 640px) {
+  .companion svg { transform: scale(0.8); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .companion { display: none; }
+}
+
 /* silent player — the scene breathes while the song "plays" */
 @keyframes kenburns {
   0% { transform: scale(1) translateY(0); }
