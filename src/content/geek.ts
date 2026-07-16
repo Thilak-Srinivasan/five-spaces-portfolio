@@ -104,35 +104,41 @@ export interface FakePaper {
   title: string
   abstract: string
   fig?: string // drop an image into src/assets/papers/ and it appears as Fig. 1
+  basedOn?: { label: string; url: string } // the real science behind the gag
 }
 
 export const PAPERS: FakePaper[] = [
   {
     id: 'arXiv:never.0001',
+    basedOn: { label: 'ERGODICITY', url: 'https://en.wikipedia.org/wiki/Ergodicity' },
     fig: new URL('../assets/papers/never-0001.jpg', import.meta.url).href,
     title: 'Ergodic Lagrangian Dynamics in a Superhero Universe',
     abstract: 'we derive the equations of motion for a web-slinger under Manhattan boundary conditions. energy is not conserved; drama is.',
   },
   {
     id: 'arXiv:never.0002',
+    basedOn: { label: 'DERIVATIVE-FREE OPTIMIZATION', url: 'https://en.wikipedia.org/wiki/Derivative-free_optimization' },
     fig: new URL('../assets/papers/never-0002.jpg', import.meta.url).href,
     title: 'Black-Box Optimization of a Life, N = 1',
     abstract: 'unknown objective function, noisy feedback, no gradient access. we keep sampling anyway. convergence not guaranteed; character development observed.',
   },
   {
     id: 'arXiv:never.0003',
+    basedOn: { label: 'THE PARETO PRINCIPLE', url: 'https://en.wikipedia.org/wiki/Pareto_principle' },
     fig: new URL('../assets/papers/never-0003.jpg', import.meta.url).href,
     title: 'A Pareto Analysis of Overthinking',
     abstract: '80% of the damage comes from 20% of the thoughts, usually after 1 a.m. we propose an early-stopping criterion. we do not follow it.',
   },
   {
     id: 'arXiv:never.0004',
+    basedOn: { label: 'THE BUTTERFLY EFFECT', url: 'https://en.wikipedia.org/wiki/Butterfly_effect' },
     fig: new URL('../assets/papers/never-0004.jpg', import.meta.url).href,
     title: 'Chaos Theory and the Butterfly That Rerouted My Week',
     abstract: 'sensitive dependence on initial conditions, demonstrated via one unread message. lyapunov exponents of a tuesday.',
   },
   {
     id: 'arXiv:never.0005',
+    basedOn: { label: 'PANPSYCHISM', url: 'https://en.wikipedia.org/wiki/Panpsychism' },
     fig: new URL('../assets/papers/never-0005.jpg', import.meta.url).href,
     title: 'On the Aeroacoustics of a Conscious Cosmos',
     abstract: 'if the universe is a mind, what does it hear? we present the first (and last) study of cosmic tinnitus, with implications for string theory — the vibrating kind.',

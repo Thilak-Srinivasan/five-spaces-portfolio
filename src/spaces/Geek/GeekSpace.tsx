@@ -329,6 +329,17 @@ export function GeekSpace() {
                       <span className="font-mono text-[10px] tracking-widest text-[var(--ink-dim)]/60">ABSTRACT — </span>
                       {paper.abstract}
                     </p>
+                    {paper.basedOn && (
+                      <a
+                        href={paper.basedOn.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        data-magnetic
+                        className="mt-3 inline-flex items-center gap-1.5 font-mono text-[9px] tracking-[0.25em] text-[var(--ink-dim)]/60 transition-colors hover:text-[var(--accent)]"
+                      >
+                        BASED ON REAL PHYSICS: {paper.basedOn.label} <ExternalIcon className="!h-3 !w-3" />
+                      </a>
+                    )}
                   </div>
                   <PaperFig src={paper.fig} n={i + 1} />
                 </div>
