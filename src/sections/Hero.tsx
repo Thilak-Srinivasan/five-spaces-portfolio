@@ -46,7 +46,7 @@ function OrbitingLine() {
   }, [])
 
   return (
-    <p ref={ref} className="mx-auto mt-8 min-h-[3.5rem] max-w-md font-serif text-sm italic leading-relaxed text-[var(--ink-dim)]/80">
+    <p ref={ref} className="mx-auto mt-8 min-h-[3.5rem] max-w-md font-serif text-sm italic leading-relaxed text-[#c3d4f5]/75 [text-shadow:0_1px_10px_rgba(0,0,0,0.9)]">
       {ORBIT_LINES[idx]}
     </p>
   )
@@ -92,7 +92,7 @@ function WeaveImages() {
         onError={() => srcB !== fallbackB && setSrcB(fallbackB)}
         alt=""
         aria-hidden
-        className="absolute -bottom-2 left-[-4%] z-0 w-16 rotate-[3deg] rounded-md border border-[var(--ink-dim)]/40 opacity-85 shadow-[0_18px_50px_-18px_rgba(0,0,0,0.7)] sm:w-24 lg:w-32"
+        className="absolute -bottom-6 left-[7%] z-0 w-16 rotate-[3deg] sm:-bottom-2 sm:left-[-4%] rounded-md border border-[var(--ink-dim)]/40 opacity-85 shadow-[0_18px_50px_-18px_rgba(0,0,0,0.7)] sm:w-24 lg:w-32"
       />
     </>
   )
@@ -126,7 +126,7 @@ export function Hero() {
       <canvas ref={ref} className={`absolute inset-0 ${reduced ? 'hidden' : ''}`} aria-hidden />
       {reduced && <div className="canvas-fallback absolute inset-0" aria-hidden />}
       <div className="relative z-10 px-6 text-center">
-        <p className="relative z-10 mb-4 font-mono text-[11px] tracking-[0.4em] text-[#cfd6e4] mix-blend-difference">
+        <p className="relative z-10 mb-4 font-mono text-[11px] tracking-[0.4em] text-[#c3d4f5] [text-shadow:0_1px_14px_rgba(0,0,0,0.95),0_0_4px_rgba(0,0,0,0.9)]">
           FIVE DIMENSIONS · ONE OBSERVER
         </p>
         <div className="relative">
@@ -139,7 +139,7 @@ export function Hero() {
             THILAK S
           </h1>
         </div>
-        <p ref={subRef} className="relative z-10 mt-6 font-serif text-lg italic text-[#c3cadb] mix-blend-difference md:text-xl">
+        <p ref={subRef} className="relative z-10 mt-6 font-serif text-lg italic text-[#c3d4f5] [text-shadow:0_1px_14px_rgba(0,0,0,0.95),0_0_5px_rgba(0,0,0,0.9)] md:text-xl">
           Computational researcher. Poet. Artist. Music aficionado. Geek.
         </p>
         <OrbitingLine />

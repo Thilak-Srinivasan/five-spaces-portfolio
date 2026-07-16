@@ -305,10 +305,10 @@ export function GeekSpace() {
           <p className="mx-auto mb-12 max-w-md text-center font-serif italic leading-relaxed text-[var(--ink-dim)]">{FIELD_NOTES_INTRO}</p>
           <div className="grid items-start gap-5 sm:grid-cols-2">
             {FIELD_NOTES.map((note, i) => (
-              <div key={i} className="relative bg-[#14101c] px-6 py-6 shadow-[0_10px_28px_-12px_rgba(0,0,0,0.55)]" style={{ transform: `rotate(${((i % 3) - 1) * 0.8}deg)` }}>
+              <div key={i} className="group relative bg-[#14101c] px-6 py-6 shadow-[0_10px_28px_-12px_rgba(0,0,0,0.55)] transition-colors duration-300 hover:bg-[#1a1426]" style={{ transform: `rotate(${((i % 3) - 1) * 0.8}deg)` }}>
                 <span className="tape" aria-hidden />
                 <p className="font-mono text-[8px] tracking-[0.35em] text-[var(--ink-dim)]/50">FIELD NOTE № {String(i + 1).padStart(2, '0')}</p>
-                <p className="mt-3 font-hand text-xl leading-relaxed text-[#e6e0f0]">{note}</p>
+                <p className="mt-3 font-hand text-xl leading-relaxed text-[#e6e0f0]/70 transition-colors duration-300 group-hover:text-[#f2eefa]">{note}</p>
               </div>
             ))}
           </div>

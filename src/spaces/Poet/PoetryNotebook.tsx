@@ -69,7 +69,7 @@ export function PoetryNotebook() {
           aria-hidden
         />
 
-        <div ref={pageRef} className="relative flex min-h-[430px] flex-col px-9 py-10 md:min-h-[460px] md:px-12">
+        <div ref={pageRef} className="group/nb relative flex min-h-[430px] flex-col px-9 py-10 md:min-h-[460px] md:px-12">
           <p className="font-mono text-[9px] tracking-[0.4em] text-[var(--ink-dim)]/60">
             {poem.kind.toUpperCase()} · PAGE {String(page + 1).padStart(2, '0')}
           </p>
@@ -81,7 +81,7 @@ export function PoetryNotebook() {
               ) : (
                 <p
                   key={i}
-                  className={`font-serif leading-relaxed text-[var(--ink-dim)] ${
+                  className={`font-serif leading-relaxed text-[var(--ink-dim)] transition-colors duration-300 group-hover/nb:text-[var(--ink)] ${
                     isProse ? 'text-[16px] leading-[1.95]' : 'text-[17px]'
                   }`}
                 >
