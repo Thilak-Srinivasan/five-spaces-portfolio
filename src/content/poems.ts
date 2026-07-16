@@ -112,7 +112,7 @@ export const POEMS: Poem[] = [
     lines: [
       'life isn’t lived so much as felt in fragments — in hues, in moments that stay long after they’ve technically ended. the quiet warmth of dusk is one of them: that hour when the sky lowers its voice and everything ordinary becomes briefly cosmic.',
       'i keep those pieces. i don’t know where else they would go.',
-      'someday all of this will be one photograph i can’t stop describing to strangers. for now it is just a tuesday, golden at the edges, and i am here for it — fully, foolishly here.',
+      'someday all of this will be one photograph i can’t stop describing to strangers. for now it is just a thursday, golden at the edges, and i am here for it — fully, foolishly here.',
     ],
   },
   {

@@ -134,7 +134,7 @@ export const PAPERS: FakePaper[] = [
     basedOn: { label: 'THE BUTTERFLY EFFECT', url: 'https://en.wikipedia.org/wiki/Butterfly_effect' },
     fig: new URL('../assets/papers/never-0004.jpg', import.meta.url).href,
     title: 'Chaos Theory and the Butterfly That Rerouted My Week',
-    abstract: 'sensitive dependence on initial conditions, demonstrated via one unread message. lyapunov exponents of a tuesday.',
+    abstract: 'sensitive dependence on initial conditions, demonstrated via one unread message. lyapunov exponents of a monday.',
   },
   {
     id: 'arXiv:never.0005',
