@@ -228,10 +228,10 @@ export function AudiophileSpace() {
           <figure className="relative rotate-[-1.5deg]">
             {/* the record, peeking out of the sleeve */}
             <div
-              className="vinyl-disc absolute -right-14 top-1/2 hidden h-56 w-56 -translate-y-1/2 rounded-full sm:block"
+              className="vinyl-disc absolute -right-24 top-1/2 hidden h-64 w-64 -translate-y-1/2 rounded-full sm:block md:-right-32 md:h-72 md:w-72"
               aria-hidden
             >
-              <span className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--accent)]" />
+              <span className="absolute left-1/2 top-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[var(--accent)] font-mono text-[8px] font-bold tracking-[0.2em] text-[#08070b]">SIDE A</span>
               <span className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#08070b]" />
             </div>
             {/* the sleeve */}

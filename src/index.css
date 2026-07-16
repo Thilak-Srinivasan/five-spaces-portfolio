@@ -109,8 +109,12 @@ body {
 }
 .vinyl-disc {
   background:
-    repeating-radial-gradient(circle at 50% 50%, #16151a 0 2px, #0c0b0f 2px 4px);
-  border: 1px solid color-mix(in srgb, var(--ink-dim) 40%, transparent);
+    conic-gradient(from 40deg, rgba(255, 255, 255, 0.09) 0deg 24deg, transparent 40deg 168deg, rgba(255, 255, 255, 0.07) 190deg 214deg, transparent 230deg 360deg),
+    repeating-radial-gradient(circle at 50% 50%, #2b2933 0 2px, #131118 2px 5px);
+  border: 2px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  box-shadow:
+    0 0 40px -6px color-mix(in srgb, var(--accent) 35%, transparent),
+    0 14px 40px -12px rgba(0, 0, 0, 0.7);
   animation: vinylspin 10s linear infinite;
 }
 @media (prefers-reduced-motion: reduce) {

@@ -143,11 +143,16 @@ export function Hero() {
           Computational researcher. Poet. Artist. Music aficionado. Geek.
         </p>
         <OrbitingLine />
-        <img
-          src={introImg}
-          alt="Thilak S"
-          className="mx-auto mt-8 max-h-56 w-auto max-w-[85vw] rounded-md border border-[var(--accent)]/40 object-contain shadow-[0_0_50px_-10px_rgba(46,111,255,0.45)] md:max-h-64"
-        />
+        <div
+          data-tilt
+          className="mx-auto mt-8 w-fit overflow-hidden rounded-md border border-[var(--accent)]/40 shadow-[0_0_50px_-10px_rgba(46,111,255,0.45)]"
+        >
+          <img
+            src={introImg}
+            alt="Thilak S"
+            className="kenburns max-h-56 w-auto max-w-[85vw] object-contain md:max-h-64"
+          />
+        </div>
       </div>
       <div className="absolute bottom-10 z-10 flex flex-col items-center gap-2 text-[var(--ink-dim)]">
         <p className="font-mono text-[10px] tracking-[0.3em]">CHOOSE A DIMENSION</p>
