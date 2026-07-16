@@ -18,8 +18,17 @@ export function MilesModal({ onClose }: { onClose: () => void }) {
     >
       <article
         onClick={(e) => e.stopPropagation()}
-        className="max-h-[85vh] w-full max-w-2xl overflow-y-auto border border-[#ff4fa3]/40 bg-[#0b0812] p-8 shadow-[0_0_60px_rgba(255,79,163,0.15)] md:p-12"
+        data-lenis-prevent
+        className="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto border border-[#ff4fa3]/40 bg-[#0b0812] p-8 shadow-[0_0_60px_rgba(255,79,163,0.15)] md:p-12"
       >
+        <button
+          onClick={onClose}
+          data-magnetic
+          aria-label="Close"
+          className="sticky top-0 float-right -mr-2 -mt-2 flex h-9 w-9 items-center justify-center rounded-full border border-[#ff4fa3]/50 bg-[#0b0812]/90 font-mono text-sm text-[#ff4fa3] transition-transform hover:scale-110"
+        >
+          ✕
+        </button>
         <p className="chromatic font-mono text-xs tracking-[0.3em] text-[#37f5c8]">{MILES_JOURNAL.title}</p>
         <h2 className="chromatic mt-2 font-grotesk text-2xl font-bold text-[#f2eefa]">
           the anomaly refuses the canon
