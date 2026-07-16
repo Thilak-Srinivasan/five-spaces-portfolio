@@ -6,6 +6,8 @@ import { ExternalIcon } from '../../components/Icons'
 import { ARTIST_INTRO, PRACTICE, SKETCHES, TOOLS_LINE } from '../../content/artist'
 import { LINKS } from '../../content/links'
 import { SketchTile } from './SketchTile'
+import { ScrubText } from '../../components/ScrubText'
+import { GiantMarquee } from '../../components/GiantMarquee'
 import { MarginNote } from '../../components/Collage'
 import theEye from '../../assets/extras/the-eye.jpg'
 
@@ -34,9 +36,7 @@ export function ArtistSpace() {
         <section className="mb-20 grid gap-10 md:grid-cols-[1fr_1fr]">
           <div className="space-y-6">
             {PRACTICE.map((para, i) => (
-              <p key={i} className="font-serif text-[17px] leading-[1.9] text-[var(--ink-dim)]">
-                {para}
-              </p>
+              <ScrubText key={i} text={para} className="font-serif text-[17px] leading-[1.9] text-[var(--ink)]" />
             ))}
           </div>
           <div className="flex flex-col justify-between border border-[var(--ink-dim)]/25 bg-[var(--bg-soft)]/60 p-8">
@@ -48,7 +48,7 @@ export function ArtistSpace() {
               src={theEye}
               alt="The artist's desk — pencils, eraser, paper"
               loading="lazy"
-              className="my-6 w-full rounded-sm border border-[var(--ink-dim)]/25 object-cover opacity-90 grayscale-[0.3] transition-all duration-700 hover:opacity-100 hover:grayscale-0"
+              className="blob-photo my-6 w-full border border-[var(--ink-dim)]/25 object-cover opacity-90 grayscale-[0.3] transition-all duration-700 hover:opacity-100 hover:grayscale-0"
             />
             <p className="font-mono text-[10px] leading-relaxed tracking-widest text-[var(--ink-dim)]/60">
               LIGHT OVER A CHEEKBONE
@@ -79,6 +79,8 @@ export function ArtistSpace() {
           </div>
           <MarginNote className="mt-3">who needs color when you have six kinds of dark?</MarginNote>
         </section>
+
+        <GiantMarquee text="reference · rough · refine ·" variant="serif" />
 
         {/* masonry */}
         <section>

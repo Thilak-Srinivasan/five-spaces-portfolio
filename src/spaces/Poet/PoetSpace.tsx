@@ -7,6 +7,8 @@ import { BIO, CREDIT, INFLUENCES, INTERLUDES, OPENING, READING_NOTE, SHELF, WALL
 import { NOTEBOOK_NOTE, NOTEBOOK_TITLE } from '../../content/poems'
 import { LINKS } from '../../content/links'
 import { TypeLine } from './TypeLine'
+import { ScrubText } from '../../components/ScrubText'
+import { GiantMarquee } from '../../components/GiantMarquee'
 import { PoetryNotebook } from './PoetryNotebook'
 import { Polaroid, TapedNote } from '../../components/Collage'
 import kristinThilak from '../../assets/extras/kristin-thilak.jpg'
@@ -57,9 +59,7 @@ export function PoetSpace() {
         <section className="mx-auto mt-16 max-w-xl space-y-12">
           <SectionLabel>the person</SectionLabel>
           {BIO.map((para, i) => (
-            <p key={i} className="font-serif text-lg leading-[2] text-[var(--ink-dim)] first-letter:text-[var(--ink)]">
-              {para}
-            </p>
+            <ScrubText key={i} text={para} className="font-serif text-lg leading-[2] text-[var(--ink)]" />
           ))}
         </section>
 
@@ -103,8 +103,10 @@ export function PoetSpace() {
           <PoetryNotebook />
         </section>
 
+        <GiantMarquee text="no feeling is final ·" variant="serif" />
+
         {/* the shelf — curated readings, all linked */}
-        <section className="mt-32">
+        <section className="mt-16">
           <SectionLabel>the shelf</SectionLabel>
           <p className="mx-auto mb-12 max-w-md text-center font-serif italic leading-relaxed text-[var(--ink-dim)]">
             {READING_NOTE}

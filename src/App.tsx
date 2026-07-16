@@ -5,6 +5,7 @@ import Lenis from 'lenis'
 import { PersonaProvider, usePersona } from './state/PersonaContext'
 import { Preloader } from './components/Preloader'
 import { MagneticCursor } from './components/MagneticCursor'
+import { TiltEffect } from './components/TiltEffect'
 import { CommandOverlay } from './components/CommandOverlay'
 import { Landing } from './sections/Landing'
 import { SpaceRoot } from './sections/SpaceRoot'
@@ -36,6 +37,7 @@ function App() {
   return (
     <PersonaProvider>
       <MagneticCursor />
+      <TiltEffect />
       <CommandOverlay />
       {loading ? <Preloader onDone={() => setLoading(false)} /> : <Stage />}
     </PersonaProvider>

@@ -75,7 +75,7 @@ export const PERSONAS: Record<PersonaId, PersonaTheme> = {
     accent2: '#ff4fa3',
     ink: '#f2eefa',
     inkDim: '#6b6478',
-    headingFont: 'var(--font-grotesk)',
+    headingFont: 'var(--font-serif)',
     bodyFont: 'var(--font-grotesk)',
     cursor: 'pulse-ring',
   },

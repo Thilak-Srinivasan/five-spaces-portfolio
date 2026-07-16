@@ -4,6 +4,13 @@ import { SplitText } from 'gsap/SplitText'
 import { Starfield3D } from '../canvas/Starfield3D'
 import { useCanvasEffect, prefersReducedMotion } from '../canvas/useCanvasEffect'
 import introImg from '../assets/extras/intro-page.jpg'
+import fallbackA from '../assets/extras/transcend-1.jpg'
+import fallbackB from '../assets/extras/kristin-thilak.jpg'
+
+// preferred hero weave photos — drop hero-1.jpg / hero-2.jpg into src/assets/extras/
+// to replace the fallbacks
+const heroA = new URL('../assets/extras/hero-1.jpg', import.meta.url).href
+const heroB = new URL('../assets/extras/hero-2.jpg', import.meta.url).href
 
 gsap.registerPlugin(SplitText)
 
@@ -45,6 +52,52 @@ function OrbitingLine() {
   )
 }
 
+/** photos woven through the hero type, drifting apart as you scroll */
+function WeaveImages() {
+  const a = useRef<HTMLImageElement>(null)
+  const b = useRef<HTMLImageElement>(null)
+  const [srcA, setSrcA] = useState(heroA)
+  const [srcB, setSrcB] = useState(heroB)
+  useEffect(() => {
+    if (prefersReducedMotion()) return
+    let raf = 0
+    const onScroll = () => {
+      if (raf) return
+      raf = requestAnimationFrame(() => {
+        raf = 0
+        const y = window.scrollY
+        if (a.current) a.current.style.transform = `translateY(${y * -0.12}px) rotate(-4deg)`
+        if (b.current) b.current.style.transform = `translateY(${y * 0.18}px) rotate(3deg)`
+      })
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      cancelAnimationFrame(raf)
+    }
+  }, [])
+  return (
+    <>
+      <img
+        ref={a}
+        src={srcA}
+        onError={() => srcA !== fallbackA && setSrcA(fallbackA)}
+        alt=""
+        aria-hidden
+        className="absolute -top-10 right-[-2%] z-0 w-20 rotate-[-4deg] rounded-md border border-[var(--accent)]/30 opacity-75 shadow-[0_18px_50px_-18px_rgba(46,111,255,0.5)] sm:-top-12 sm:w-28 lg:w-40"
+      />
+      <img
+        ref={b}
+        src={srcB}
+        onError={() => srcB !== fallbackB && setSrcB(fallbackB)}
+        alt=""
+        aria-hidden
+        className="absolute -bottom-2 left-[-4%] z-0 w-16 rotate-[3deg] rounded-md border border-[var(--ink-dim)]/40 opacity-85 shadow-[0_18px_50px_-18px_rgba(0,0,0,0.7)] sm:w-24 lg:w-32"
+      />
+    </>
+  )
+}
+
 export function Hero() {
   const { ref, reduced } = useCanvasEffect(() => new Starfield3D(), { trackPointer: true })
   const nameRef = useRef<HTMLHeadingElement>(null)
@@ -73,17 +126,20 @@ export function Hero() {
       <canvas ref={ref} className={`absolute inset-0 ${reduced ? 'hidden' : ''}`} aria-hidden />
       {reduced && <div className="canvas-fallback absolute inset-0" aria-hidden />}
       <div className="relative z-10 px-6 text-center">
-        <p className="mb-4 font-mono text-[11px] tracking-[0.4em] text-[var(--ink-dim)]">
+        <p className="relative z-10 mb-4 font-mono text-[11px] tracking-[0.4em] text-[#cfd6e4] mix-blend-difference">
           FIVE DIMENSIONS · ONE OBSERVER
         </p>
-        <h1
-          ref={nameRef}
-          className="overflow-hidden font-grotesk font-bold leading-none tracking-tight text-[var(--ink)]"
+        <div className="relative">
+          <WeaveImages />
+          <h1
+            ref={nameRef}
+          className="relative z-10 overflow-hidden font-grotesk font-bold leading-none tracking-tight text-[#e8ecf4] mix-blend-difference"
           style={{ fontSize: 'clamp(4rem, 14vw, 12rem)' }}
         >
-          THILAK S
-        </h1>
-        <p ref={subRef} className="mt-6 font-serif text-lg italic text-[var(--ink-dim)] md:text-xl">
+            THILAK S
+          </h1>
+        </div>
+        <p ref={subRef} className="relative z-10 mt-6 font-serif text-lg italic text-[#c3cadb] mix-blend-difference md:text-xl">
           Computational researcher. Poet. Artist. Music aficionado. Geek.
         </p>
         <OrbitingLine />

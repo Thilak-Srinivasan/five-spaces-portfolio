@@ -3,6 +3,7 @@ import { WindTunnel } from '../../canvas/WindTunnel'
 import { useCanvasEffect } from '../../canvas/useCanvasEffect'
 import { QuoteDivider } from '../../components/QuoteDivider'
 import { CountUp } from '../../components/CountUp'
+import { GiantMarquee } from '../../components/GiantMarquee'
 import { ExternalIcon, GithubIcon } from '../../components/Icons'
 import { CERTS, CV_URL, EDUCATION, EXPERIENCE, PROJECTS, PUBLICATION, SKILLS, STATS } from '../../content/engineer'
 import type { ProjectTag } from '../../content/engineer'
@@ -102,6 +103,8 @@ export function EngineerSpace() {
           ))}
         </section>
 
+        <GiantMarquee text="SIM TO GRID ·" />
+
         {/* education + current lap */}
         <section className="mt-16 grid gap-6 md:grid-cols-2">
           <div data-obstacle className="border border-[var(--ink-dim)]/25 bg-[var(--bg-soft)]/80 p-6 backdrop-blur-sm">
@@ -180,6 +183,7 @@ export function EngineerSpace() {
               <article
                 key={p.title}
                 data-obstacle
+                data-tilt
                 className="group flex flex-col border border-[var(--ink-dim)]/25 bg-[var(--bg-soft)]/80 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent)]/70"
               >
                 <div className="flex items-center justify-between">

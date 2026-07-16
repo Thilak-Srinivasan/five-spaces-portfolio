@@ -6,6 +6,7 @@ import { ExternalIcon, SpotifyIcon } from '../../components/Icons'
 import { FIRST_DAY, LISTENING_DAY, PERSONALITY, SILENT_PLAYER_NOTE, SILENT_TRACKS, WRAPPED_SHOTS } from '../../content/audiophile'
 import { LINKS } from '../../content/links'
 import { TapedNote } from '../../components/Collage'
+import { GiantMarquee } from '../../components/GiantMarquee'
 import { WrappedTimeline } from './WrappedTimeline'
 import { ArtistConstellation } from './ArtistConstellation'
 import jojiThilak from '../../assets/extras/joji-thilak.jpg'
@@ -79,26 +80,38 @@ function fmt(sec: number) {
 function SilentPlayer() {
   const [idx, setIdx] = useState(0)
   const [playing, setPlaying] = useState(true)
+  const [shuffle, setShuffle] = useState(false)
+  const [repeatOne, setRepeatOne] = useState(false)
   const [elapsed, setElapsed] = useState(74) // start mid-song, like a memory
   const [sceneFailed, setSceneFailed] = useState<Set<number>>(new Set())
   const track = SILENT_TRACKS[idx]
+
+  const nextIndex = (from: number) => {
+    if (shuffle) {
+      let n = from
+      while (n === from) n = Math.floor(Math.random() * SILENT_TRACKS.length)
+      return n
+    }
+    return (from + 1) % SILENT_TRACKS.length
+  }
 
   useEffect(() => {
     if (!playing) return
     const id = setInterval(() => {
       setElapsed((e) => {
         if (e + 1 >= track.duration) {
-          setIdx((i) => (i + 1) % SILENT_TRACKS.length)
+          if (!repeatOne) setIdx((i) => nextIndex(i))
           return 0
         }
         return e + 1
       })
     }, 1000)
     return () => clearInterval(id)
-  }, [playing, track.duration])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [playing, track.duration, repeatOne, shuffle])
 
   const go = (dir: 1 | -1) => {
-    setIdx((i) => (i + dir + SILENT_TRACKS.length) % SILENT_TRACKS.length)
+    setIdx((i) => (dir === 1 ? nextIndex(i) : (i - 1 + SILENT_TRACKS.length) % SILENT_TRACKS.length))
     setElapsed(0)
   }
 
@@ -133,9 +146,17 @@ function SilentPlayer() {
           </div>
           <div className="mt-3 flex items-center justify-center gap-7">
             {/* shuffle */}
-            <svg viewBox="0 0 24 24" className="h-4 w-4 text-[var(--accent)]" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
-              <path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <button
+              onClick={() => setShuffle((v) => !v)}
+              data-magnetic
+              aria-label={shuffle ? 'Shuffle on' : 'Shuffle off'}
+              className={`relative transition-all ${shuffle ? 'text-[var(--accent)]' : 'text-white/45 hover:text-white/80'}`}
+            >
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+                <path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              {shuffle && <span className="absolute -bottom-1.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-[var(--accent)]" />}
+            </button>
             <button onClick={() => go(-1)} data-magnetic aria-label="Previous track" className="text-white/85 transition-transform hover:scale-110">
               <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden><path d="M6 5h2v14H6zM20 5v14l-11-7z" /></svg>
             </button>
@@ -154,10 +175,23 @@ function SilentPlayer() {
             <button onClick={() => go(1)} data-magnetic aria-label="Next track" className="text-white/85 transition-transform hover:scale-110">
               <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden><path d="M16 5h2v14h-2zM4 5v14l11-7z" /></svg>
             </button>
-            {/* timer/repeat glyph for symmetry */}
-            <svg viewBox="0 0 24 24" className="h-4 w-4 text-white/50" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
-              <path d="M17 2v4M7 22v-4M21 11a8 8 0 0 0-14-5M3 13a8 8 0 0 0 14 5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            {/* repeat one */}
+            <button
+              onClick={() => setRepeatOne((v) => !v)}
+              data-magnetic
+              aria-label={repeatOne ? 'Repeat one on' : 'Repeat off'}
+              className={`relative transition-all ${repeatOne ? 'text-[var(--accent)]' : 'text-white/45 hover:text-white/80'}`}
+            >
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+                <path d="M17 2v4M7 22v-4M21 11a8 8 0 0 0-14-5M3 13a8 8 0 0 0 14 5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              {repeatOne && (
+                <>
+                  <span className="absolute -top-0.5 left-1/2 -translate-x-1/2 font-mono text-[7px] font-bold">1</span>
+                  <span className="absolute -bottom-1.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-[var(--accent)]" />
+                </>
+              )}
+            </button>
           </div>
         </div>
       </div>
@@ -192,13 +226,24 @@ export function AudiophileSpace() {
         {/* the listener, in person */}
         <section className="mt-12 flex justify-center">
           <figure className="relative rotate-[-1.5deg]">
-            <span className="tape z-10" aria-hidden />
-            <img
-              src={jojiThilak}
-              alt="Thilak at a Joji show"
-              loading="lazy"
-              className="max-h-[420px] w-auto max-w-full rounded-md border border-[var(--ink-dim)]/30 object-contain shadow-[0_20px_60px_-20px_rgba(200,255,62,0.25)]"
-            />
+            {/* the record, peeking out of the sleeve */}
+            <div
+              className="vinyl-disc absolute -right-14 top-1/2 hidden h-56 w-56 -translate-y-1/2 rounded-full sm:block"
+              aria-hidden
+            >
+              <span className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--accent)]" />
+              <span className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#08070b]" />
+            </div>
+            {/* the sleeve */}
+            <div className="relative rounded-sm border border-[var(--ink-dim)]/30 bg-[#111016] p-2 shadow-[0_20px_60px_-20px_rgba(200,255,62,0.25)]">
+              <span className="tape z-10" aria-hidden />
+              <img
+                src={jojiThilak}
+                alt="Thilak at a Joji show"
+                loading="lazy"
+                className="max-h-[400px] w-auto max-w-full rounded-[2px] object-contain"
+              />
+            </div>
             <figcaption className="mt-3 text-center font-hand text-xl text-[var(--ink-dim)]">
               the night the algorithm finally got it right.
             </figcaption>
@@ -243,8 +288,10 @@ export function AudiophileSpace() {
           <p className="mt-2 font-mono text-[10px] text-[var(--ink-dim)]">{PERSONALITY.legend}</p>
         </section>
 
+        <GiantMarquee text="ON REPEAT ·" reverse />
+
         {/* constellation */}
-        <section className="mt-28">
+        <section className="mt-12">
           <p className="mb-8 text-center font-mono text-[10px] tracking-[0.35em] text-[var(--ink-dim)]">
             THE CONSTELLATION · TOP ARTISTS
           </p>

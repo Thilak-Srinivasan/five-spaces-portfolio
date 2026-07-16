@@ -103,6 +103,46 @@ body {
   .wrapped-marquee { animation: none; }
 }
 
+/* vinyl record peeking from the sleeve */
+@keyframes vinylspin {
+  to { transform: rotate(360deg); }
+}
+.vinyl-disc {
+  background:
+    repeating-radial-gradient(circle at 50% 50%, #16151a 0 2px, #0c0b0f 2px 4px);
+  border: 1px solid color-mix(in srgb, var(--ink-dim) 40%, transparent);
+  animation: vinylspin 10s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .vinyl-disc { animation: none; }
+}
+
+/* liveliness round: outlined marquee text, blob photos, tilt cards */
+.giant-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--ink-dim) 55%, transparent);
+}
+@keyframes blobmorph {
+  0%, 100% { border-radius: 58% 42% 38% 62% / 52% 44% 56% 48%; }
+  33% { border-radius: 44% 56% 60% 40% / 46% 60% 40% 54%; }
+  66% { border-radius: 60% 40% 46% 54% / 58% 42% 58% 42%; }
+}
+.blob-photo {
+  border-radius: 58% 42% 38% 62% / 52% 44% 56% 48%;
+  animation: blobmorph 14s ease-in-out infinite;
+  overflow: hidden;
+}
+[data-tilt] {
+  transition: transform 0.25s ease;
+  will-change: transform;
+}
+[data-tilt].tilting {
+  transition: transform 0.06s linear;
+}
+@media (prefers-reduced-motion: reduce) {
+  .blob-photo { animation: none; }
+}
+
 /* scroll companions — little doodles that travel with the scroll */
 .companion {
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);

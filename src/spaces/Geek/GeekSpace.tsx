@@ -3,6 +3,8 @@ import { ProjectorDust } from '../../canvas/ProjectorDust'
 import { useCanvasEffect } from '../../canvas/useCanvasEffect'
 import { TicketStub, MarginNote, TapedNote } from '../../components/Collage'
 import { ExternalIcon } from '../../components/Icons'
+import { GiantMarquee } from '../../components/GiantMarquee'
+import { ScrubText } from '../../components/ScrubText'
 import { CINEMA, CINEMA_NOTE, CORKBOARD_NOTE, FIELD_NOTES, FIELD_NOTES_INTRO, GEEK_INTRO, PADDOCK, PAPERS, PAPERS_INTRO, THEORIES } from '../../content/geek'
 import type { CinemaEntry } from '../../content/geek'
 
@@ -213,7 +215,7 @@ export function GeekSpace() {
           <h1 className="mt-4 font-grotesk font-bold leading-none text-[var(--ink)]" style={{ fontSize: 'clamp(3rem, 9vw, 6.5rem)' }}>
             THE GEEK.
           </h1>
-          <p className="mx-auto mt-6 max-w-xl font-serif text-lg italic leading-relaxed text-[var(--ink-dim)]">{GEEK_INTRO}</p>
+          <ScrubText text={GEEK_INTRO} className="mx-auto mt-6 max-w-xl font-serif text-lg italic leading-relaxed text-[var(--ink)]" />
           <div className="mt-10">
             <TicketStub top="CINEMA · NO REFUNDS" main="ADMIT ONE" sub="to every universe i refuse to leave quietly" />
           </div>
@@ -241,8 +243,10 @@ export function GeekSpace() {
           <span className="h-px flex-1 bg-[var(--ink-dim)] opacity-30" />
         </div>
 
+        <GiantMarquee text="WHAT IF · WHY NOT ·" />
+
         {/* rabbit hole 2 — the corkboard */}
-        <section className="relative mt-8">
+        <section className="relative mt-2">
           <p className="mb-3 text-center font-mono text-[10px] tracking-[0.4em] text-[var(--ink-dim)]/70">— THE CORKBOARD · THEORIES & PARADOXES —</p>
           <p className="mx-auto mb-12 max-w-md text-center font-serif italic leading-relaxed text-[var(--ink-dim)]">{CORKBOARD_NOTE}</p>
           {/* the red string, meandering behind the pins */}
@@ -267,6 +271,7 @@ export function GeekSpace() {
                 target="_blank"
                 rel="noreferrer"
                 data-magnetic
+                data-tilt
                 className="group relative block border border-[var(--ink-dim)]/25 bg-[var(--bg-soft)]/90 p-5 shadow-[0_10px_28px_-12px_rgba(0,0,0,0.6)] transition-transform duration-300 hover:-translate-y-1 hover:rotate-0"
                 style={{ transform: `rotate(${((i % 5) - 2) * 0.9}deg)` }}
               >
