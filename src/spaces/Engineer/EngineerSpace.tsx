@@ -7,6 +7,7 @@ import { GiantMarquee } from '../../components/GiantMarquee'
 import { ExternalIcon, GithubIcon } from '../../components/Icons'
 import { CERTS, CV_URL, EDUCATION, EXPERIENCE, PROJECTS, PUBLICATION, SKILLS, STATS } from '../../content/engineer'
 import type { ProjectTag } from '../../content/engineer'
+import researcherImg from '../../assets/extras/researcher.jpg'
 
 const TAGS: Array<ProjectTag | 'ALL'> = ['ALL', 'CFD', 'Thermal', 'AI/ML', 'Robotics', 'Finance', 'Manufacturing']
 
@@ -56,7 +57,8 @@ export function EngineerSpace() {
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 pb-24 pt-32">
         {/* hero */}
-        <section className="min-h-[55vh]">
+        <section className="grid min-h-[55vh] items-center gap-10 md:grid-cols-[1fr_auto]">
+          <div>
           <p className="font-mono text-[11px] tracking-[0.35em] text-[var(--accent)]">DIMENSION 01 · TELEMETRY Δ −0.042</p>
           <h1 data-obstacle className="mt-4 inline-block font-grotesk font-bold leading-[0.95] text-[var(--ink)]" style={{ fontSize: 'clamp(3rem, 8vw, 6.5rem)' }}>
             PERFORMANCE,
@@ -87,6 +89,22 @@ export function EngineerSpace() {
               <GithubIcon /> GITHUB
             </a>
           </div>
+          </div>
+
+          {/* the natural habitat */}
+          <figure data-obstacle data-tilt className="mx-auto w-56 max-w-full md:w-64 lg:w-72">
+            <div className="relative border border-[var(--accent)]/35 bg-[var(--bg-soft)]/80 p-1.5 shadow-[0_24px_70px_-24px_rgba(46,111,255,0.45)]">
+              {/* corner brackets */}
+              <span className="absolute -left-1 -top-1 h-3 w-3 border-l-2 border-t-2 border-[var(--accent)]" aria-hidden />
+              <span className="absolute -right-1 -top-1 h-3 w-3 border-r-2 border-t-2 border-[var(--accent)]" aria-hidden />
+              <span className="absolute -bottom-1 -left-1 h-3 w-3 border-b-2 border-l-2 border-[var(--accent)]" aria-hidden />
+              <span className="absolute -bottom-1 -right-1 h-3 w-3 border-b-2 border-r-2 border-[var(--accent)]" aria-hidden />
+              <img src={researcherImg} alt="The researcher at his station, solver running" loading="lazy" className="block w-full" />
+            </div>
+            <figcaption className="mt-2 text-center font-mono text-[9px] tracking-[0.25em] text-[var(--ink-dim)]">
+              SOLVER RUNNING
+            </figcaption>
+          </figure>
         </section>
 
         {/* wrapped-style stat band */}
