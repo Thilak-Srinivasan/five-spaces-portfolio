@@ -102,7 +102,7 @@ export function EngineerSpace() {
               <img src={researcherImg} alt="The researcher at his station, solver running" loading="lazy" className="block w-full" />
             </div>
             <figcaption className="mt-2 text-center font-mono text-[9px] tracking-[0.25em] text-[var(--ink-dim)]">
-              SOLVER RUNNING
+              FIG. 0 — SOLVER RUNNING
             </figcaption>
           </figure>
         </section>
