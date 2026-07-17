@@ -32,6 +32,12 @@ export const SKETCHES: Sketch[] = [
     caption: 'the gaze · graphite on paper',
     story: 'half in shadow, hair mid-storm — drawn for the one eye that watches you back.',
   },
+  {
+    src: new URL('../assets/sketches/kris.jpg', import.meta.url).href,
+    alt: 'Pencil sketch of a girl taking a mirror photo with a camera, hand behind her neck',
+    caption: 'kris · graphite on paper',
+    story: 'the art herself.',
+  },
   { placeholder: true, alt: 'placeholder frame', caption: 'next page intentionally left blank' },
   { placeholder: true, alt: 'placeholder frame', caption: 'in progress — the eye is patient' },
   { placeholder: true, alt: 'placeholder frame', caption: 'reference found, courage pending' },
